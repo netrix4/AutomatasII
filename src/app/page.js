@@ -8,22 +8,29 @@ const HomePage = () => {
   function iniciar(e) {
     e.preventDefault();
     const resArray = []
-    const temp = analizar(`72+8
-    99+1
-    a = 16
-    palabra = 36
-    10-5
-    30/3
-    55*2
+
+    const temp = analizar(`a = 10 - 30
+    b = 20
+    c = 10
+    d = a + b + c
+    total = (a+b) * (c/d)
     `)
 
+    // a = 10 - 30
+    // b = 20
+    // c = 10
+    // d = a + b + c
+
+    // total = (a+b) * (c/d)
+    
     temp.forEach(item => {
-      console.log('Elementos: ', item, typeof item)
+      // console.log('Elementos: ', item, typeof item)
       if (typeof item === typeof 0 ) {
         resArray.push(item.toString() + ', ')
       }
       else{
-        resArray.push(item[0].toString() + ', ')
+        console.log(typeof item)
+        resArray.push(item)
       }
     }); temp
 

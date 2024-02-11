@@ -8,11 +8,12 @@ import LabeledExprLexer from "../../grammar/LabeledExprLexer.js";
 // import antlr4 from 'antlr4';
 
 export default class CustomVisitor extends LabeledExprVisitor {	
-	constructor(props) {
-		super(props);
-		this.memory = {};
-	}
-	// memory = {}
+	// constructor(props) {
+	// 	super(props);
+	// 	this.memory = {};
+	// }
+
+	memory = {}
 
 	// Visit a parse tree produced by LabeledExprParser#prog.
 	visitProg(ctx) {
@@ -24,6 +25,7 @@ export default class CustomVisitor extends LabeledExprVisitor {
 	// Visit a parse tree produced by LabeledExprParser#printExpr.
 	visitPrintExpr(ctx) {
 	  const value = this.visit(ctx.expr());
+	  console.log(value)
 	  // return 0 // return dummy value
 	  return this.visitChildren(ctx);
 	}
@@ -31,9 +33,11 @@ export default class CustomVisitor extends LabeledExprVisitor {
 	/** ID '=' expr NEWLINE */
 	// Visit a parse tree produced by LabeledExprParser#assign.
 	visitAssign(ctx) {
-		const id = ctx.getText();
+		const id = ctx.ID().getText();
 		const value = this.visit(ctx.expr());
-		this.memory = {...this.memory, Asignacion: { [id] : value } }
+		// this.memory = {...this.memory, Asignacion: { [id.toString()] : value } }
+		this.memory[id] = value
+		console.log('Resultado: ', this.memory[id.toString()])
 		return value;
 	//   return this.visitChildren(ctx);
 	}
@@ -85,12 +89,15 @@ export default class CustomVisitor extends LabeledExprVisitor {
 	/** ID */
 	// Visit a parse tree produced by LabeledExprParser#id.
 	visitId(ctx) {
-		// const id = ctx.ID
-		const id = ctx.id().getText();
-		if (Object.hasOwn(parseInt, id)) {
-			return memory[id];
+		// const id = ctx.getText(); // Este ya se aque hace algo
+		const id = ctx.ID().getText();
+		
+		if (this.memory[id]) {
+			// console.log('visitId dentro del if', this.memory[id])
+			return this.memory[id];
 		}
 		else{
+			console.log('Es para cuando no existe, puede dar resultados incorrectos en mult div')
 			return 0;
 		}
 	//   return this.visitChildren(ctx);
