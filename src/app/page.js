@@ -16,35 +16,26 @@ const HomePage = () => {
     total = (a+b) * (c/d)
     `)
 
-    // a = 10 - 30
-    // b = 20
-    // c = 10
-    // d = a + b + c
+    console.log(temp);
 
-    // total = (a+b) * (c/d)
-    
     temp.forEach(item => {
-      // console.log('Elementos: ', item, typeof item)
-      if (typeof item === typeof 0 ) {
-        resArray.push(item.toString() + ', ')
-      }
-      else{
-        console.log(typeof item)
-        resArray.push(item)
-      }
-    }); temp
+      resArray.push('Resultado: ' + item.toString() + ' ')
+    });
 
     setResults(resArray)
 
   }
   return (
-    <div>
-      Este es un Home page para probar el flujo de informacion
-      <form onSubmit={iniciar}>
-      <button>Boton</button>
-      </form>
-      <div>
-        {results}
+    <div className='main-div'>
+      <div className='content'>
+        Este es un Home page para probar el flujo de informacion
+        <form onSubmit={iniciar}>
+        <button>Boton</button>
+        </form>
+        <div>
+          {results}
+        </div>
+
       </div>
     </div>
   )
