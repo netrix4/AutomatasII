@@ -1,33 +1,25 @@
-@tailwind base;
+/* @tailwind base;
 @tailwind components;
-@tailwind utilities;
+@tailwind utilities; */
 
-:root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
+main{
+  align-items: center;
+  align-content: flex-start;
+  justify-content: center;
+  display: flex;
 }
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
-  }
+.card-container{
+  background-color: rgb(180, 0, 180);
+  margin: 7px;
+  border-radius: 3px;
+  width: 20%;
+  max-width: 50%;
+  align-items: center;
+  padding: 7px;
 }
-
-body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
-}
-
-@layer utilities {
-  .text-balance {
-    text-wrap: balance;
-  }
+.card-content{
+  background-color: rgb(255, 0, 255);
+  border-radius: 3px;
+  align-self: center;
+  text-align: center;
 }
