@@ -1,36 +1,28 @@
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
-## Getting Started
+## To compile grammars
+
+Comand to compile grammars from project's root:
+
+```bash
+antlr4 -Dlanguage=JavaScript -o /src/grammar -visitor -no-listener /grammar/grammar.g4
+
+```
 
 First, run the development server:
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+Everything will work on [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+## Help
 
-## Learn More
+Antlr4 official page [here](https://www.antlr.org/download.html)
 
-To learn more about Next.js, take a look at the following resources:
+JavaSKD can also be found [here](https://www.antlr.org/download.html) 
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+Tutorial on how to add to install ANTLR4 [YouTube](https://www.youtube.com/watch?v=pa8qG0I10_I) and [Blog](https://www.javatpoint.com/javac-is-not-recognized#:~:text=javac%20is%20not%20recognized%20is%20an%20error%20occurs%20while%20we,bin%20folder%20of%20the%20JDK.&text=The%20reason%20behind%20to%20occur,to%20the%20System's%20environment%20variable.)

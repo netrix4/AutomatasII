@@ -1,11 +1,7 @@
 import antlr4 from 'antlr4';
 import CalculadoraLexer from '../grammar/Test.js';
 import CalculadoraParser from '../grammar/Test.js';
-import CustomVisitor from '../helper/customVisitor.js';
-
-// const input = `
-//     2+4
-// `;
+import CustomVisitor from '../helper/CustomVisitor.js';
 
 export function analizadorSintactico(input) {
     const chars = new antlr4.InputStream(input);
