@@ -35,7 +35,6 @@ const HomePage = () => {
         <div>
           {results}
         </div>
-
       </div>
     </div>
   )
