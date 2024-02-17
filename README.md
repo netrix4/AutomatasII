@@ -5,7 +5,7 @@ This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next
 Comand to compile grammars from project's root:
 
 ```bash
-antlr4 -Dlanguage=JavaScript -o /src/grammar -visitor -no-listener /grammar/grammar.g4
+antlr4 -Dlanguage=JavaScript -o ./src/grammar -visitor -no-listener ./grammar/grammar.g4
 
 ```
 
