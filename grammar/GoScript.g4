@@ -16,7 +16,7 @@ says:      SAYS NUMBER ID                                          #DeclarationI
 ;
 
 //printf equivalent function
-displays: DISPLAYS BRACEO DQUOTE TEXT NEWLINE? DQUOTE BRACEO SCOLON    #Text
+displays: DISPLAYS BRACEO DQUOTE TEXT NEWLINE? DQUOTE BRACEC SCOLON    #Text
 ;
 
 //Assignation to an existing variable

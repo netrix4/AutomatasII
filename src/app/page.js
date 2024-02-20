@@ -8,30 +8,22 @@ export default function HomePage() {
   function iniciar(e) {
     e.preventDefault();
     const resArray = []
-
-    // const temp = analizar(`go {
-    //   says number a;
-    //   says number b;
-    //   says number c;
-    //   says number d;
-    //   };`);
     
     const temp = analizar(`go {
       says number total;
       says number iva;
       says number isr;
       says number impuestos;
+      says number total;
       };`
     );
 
-    console.log(temp);
-
-    resArray.push(temp);
-
-    // temp.forEach(item => {
-      //   // resArray.push('Resultado: ' + item.toString() + ' ');
-      //   resArray.push(item);
-    // });
+    // console.log(temp);
+    const entries = Array.from(temp.entries())
+    entries.forEach(item => {
+        // resArray.push('Variable (ID): ' + item[0] + ' Valor: ' + item[1] +' ');
+        resArray.push(`Variable ID: ${item[0]} con valor ${item[1]} \n`);
+    });
 
     setResults(resArray)
 
