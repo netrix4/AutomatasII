@@ -1,25 +1,32 @@
 grammar GoScript;
 import GoScriptRules;
 
-//Start
+// Start
 big_bang:  GO CBRACEO content? CBRACEC SCOLON;
 
-//Allowed content
-content:  (says SCOLON NEWLINE?)+                                 #StatesVariable
+// Allowed content
+content:  (says NEWLINE)+                                         #WrongVariableStating
+    |     (says SCOLON NEWLINE?)+                                 #StatesVariable
     |     displays SCOLON NEWLINE?                                #DisplaysText
 ;
 
 //Declaration diferent types of variables
-says:      SAYS NUMBER ID                                          #DeclarationInteger
+
+// Talves si solo acpeto todo en id y luego en CustomVisitor lo 
+// filtro con un regex seria mejor
+says:      SAYS NUMBER assignation                                 #ExpreDeclarationInteger
+    |      SAYS NUMBER ID                                          #DeclarationInteger
+    |      SAYS NUMBER INT                                         #IntWrongDeclarationInteger
+    |      SAYS NUMBER expre                                       #ExpreWrongDeclarationInteger
     |      SAYS DOTNUM ID                                          #DeclarationFloat
     |      SAYS LETTER ID                                          #DeclarationCharacter
 ;
 
-//printf equivalent function
+// printf equivalent function
 displays: DISPLAYS BRACEO DQUOTE TEXT NEWLINE? DQUOTE BRACEC SCOLON    #Text
 ;
 
-//Assignation to an existing variable
+// Assignation to an existing variable
 assignation:ID EQU expre SCOLON                                    #NumberAssign
     |      ID EQU DQUOTE CHARAS DQUOTE SCOLON                      #CharacterAssgin
 ;

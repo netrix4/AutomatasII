@@ -13,15 +13,21 @@ export default class CustomVisitor extends GoScriptVisitor {
 	visitBig_bang(ctx) {
     console.log('Aqui comienzan las visitas');
     this.visitChildren(ctx);
+    console.log(this.Memory)
     return this.Memory;
     // return this.visitChildren(ctx);
   }
   
   // Visit a parse tree produced by GoScriptParser#StatesVariable.
   visitStatesVariable(ctx) {
-    // visit(ctx.NUMBER())
     return this.visitChildren(ctx);
   }
+
+  // Visit a parse tree produced by GoScriptParser#WrongVariableStating.
+	visitWrongVariableStating(ctx) {
+    console.log('Te falta un punto y coma, mi buen')
+	  return this.visitChildren(ctx);
+	}
 
   // Visit a parse tree produced by GoScriptParser#DisplaysText.
   visitDisplaysText(ctx) {
@@ -36,22 +42,53 @@ export default class CustomVisitor extends GoScriptVisitor {
   // Visit a parse tree produced by GoScriptParser#DeclarationInteger.
   visitDeclarationInteger(ctx) {
     const id = ctx.ID().getText();
-    // let value = this.visit(ctx.NUMBER());
-    // let value = this.visit(ctx.DOTNUM());
     const value = 0;
-    console.log(parseInt(ctx.ID().getText()))
-    if (parseInt(ctx.ID().getText())) {
-      
-    }
+
     if (this.Memory.has(id)) {
-      console.log('No puedes declarar dos veces una variable')
+      console.log('No puedes declarar dos veces una misma variable')
     } else {
-      this.Memory.set(id, value);                        // Guarda el valor en "memoria"
+      this.Memory.set(id, value);     // Guarda el valor en "memoria"
+      console.log('Id para guardar: '+ id + ' <- Valor: ' + this.Memory.get(id));
     }
 
-    console.log('Id para guardar: '+ id + ' <- Valor: ' + this.Memory.get(id));
     return this.visitChildren(ctx);
   }
+
+  // Visit a parse tree produced by GoScriptParser#DeclarationWrongInteger.
+	visitIntWrongDeclarationInteger(ctx) {
+    console.log('No puedes usar un numero como nombre de variable');
+	  return this.visitChildren(ctx);
+	}
+
+  // Visit a parse tree produced by GoScriptParser#ExpreWrongDeclarationInteger.
+	visitExpreWrongDeclarationInteger(ctx) {
+    console.log('No puedes usar una epxresion como nombre de variable');
+	  return this.visitChildren(ctx);
+	}
+
+  // Visit a parse tree produced by GoScriptParser#ExpreTWODeclarationInteger.
+	visitExpreTWODeclarationInteger(ctx) {
+    console.log('holamunde')
+	  return this.visitChildren(ctx);
+	}
+
+  // Visit a parse tree produced by GoScriptParser#ExpreDeclarationInteger.
+	visitExpreDeclarationInteger(ctx) {
+    console.log('visitExpreDeclarationInteger')
+    const assignExpreValue = [this.visit(ctx.assignation())];
+    console.log(ctx.assignation().getText())
+
+    const id = assignExpreValue[0];
+    const value = assignExpreValue[1];
+
+    if (this.Memory.has(id)) {
+      console.log('No puedes declarar dos veces una misma variable')
+    } else {
+      this.Memory.set(id, value);     // Guarda el valor en "memoria"
+      console.log('Id para guardar: '+ id + ' <- Valor: ' + this.Memory.get(id));
+    }
+	  return this.visitChildren(ctx);
+	}
   
   // Visit a parse tree produced by GoScriptParser#DeclarationFloat.
   visitDeclarationFloat(ctx) {
@@ -65,17 +102,39 @@ export default class CustomVisitor extends GoScriptVisitor {
 
   // Visit a parse tree produced by GoScriptParser#NumberAssign.
   visitNumberAssign(ctx) {
-    return this.visitChildren(ctx);
+    // De aqui salen los 5 elementos del array
+    console.log('visitNumberAssign');
+    // const value = ctx.expre.getText();
+    // const result = this.visit(ctx.expre());
+    const result = this.visitChildren(ctx);
+    const id = ctx.ID().getText();
+
+    const response = [id,result]
+    console.log(response)
+    return response;
+    // return this.visitChildren(ctx);
+
   }
 
   // Visit a parse tree produced by GoScriptParser#CharacterAssgin.
   visitCharacterAssgin(ctx) {
+    console.log('visitCharacterAssign')
     return this.visitChildren(ctx);
   }
 
   // Visit a parse tree produced by GoScriptParser#SumRes.
   visitSumRes(ctx) {
-    return this.visitChildren(ctx);
+    console.log('Visit sum res')
+    const left = this.visit(ctx.expre(0));	// Get value of left element subexpression
+		const right = this.visit(ctx.expre(1));	// Get value of right element subexpression
+
+		// if (ctx.op.getType() == LabeledExprLexer.ADD) {
+		if (ctx.operation.type == GoScriptLexer.SUM) {
+			return left + right;			
+		}
+		else{
+			return left - right;	// must be SUB so
+		}
   }
 
   // Visit a parse tree produced by GoScriptParser#Float.

@@ -12,6 +12,12 @@ export default class GoScriptVisitor extends antlr4.tree.ParseTreeVisitor {
 	}
 
 
+	// Visit a parse tree produced by GoScriptParser#WrongVariableStating.
+	visitWrongVariableStating(ctx) {
+	  return this.visitChildren(ctx);
+	}
+
+
 	// Visit a parse tree produced by GoScriptParser#StatesVariable.
 	visitStatesVariable(ctx) {
 	  return this.visitChildren(ctx);
@@ -24,8 +30,26 @@ export default class GoScriptVisitor extends antlr4.tree.ParseTreeVisitor {
 	}
 
 
+	// Visit a parse tree produced by GoScriptParser#ExpreDeclarationInteger.
+	visitExpreDeclarationInteger(ctx) {
+	  return this.visitChildren(ctx);
+	}
+
+
 	// Visit a parse tree produced by GoScriptParser#DeclarationInteger.
 	visitDeclarationInteger(ctx) {
+	  return this.visitChildren(ctx);
+	}
+
+
+	// Visit a parse tree produced by GoScriptParser#IntWrongDeclarationInteger.
+	visitIntWrongDeclarationInteger(ctx) {
+	  return this.visitChildren(ctx);
+	}
+
+
+	// Visit a parse tree produced by GoScriptParser#ExpreWrongDeclarationInteger.
+	visitExpreWrongDeclarationInteger(ctx) {
 	  return this.visitChildren(ctx);
 	}
 

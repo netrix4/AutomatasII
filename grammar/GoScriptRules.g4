@@ -12,6 +12,7 @@ DISPLAYS: 'displays';
 
 // Symbols
 ID : [a-zA-Z]+;
+NO_ID : [^a-zA-Z]+;
 CHARAS: [a-zA-Z]+;
 DIGIT: [0-9];
 INT: DIGIT+;

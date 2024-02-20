@@ -11,10 +11,9 @@ export default function HomePage() {
     
     const temp = analizar(`go {
       says number total;
-      says number iva;
-      says number isr;
       says number impuestos;
-      says number total;
+      says number suma = 1 + 1;
+      says number qwerty;
       };`
     );
 
