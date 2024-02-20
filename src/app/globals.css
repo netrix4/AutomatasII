@@ -9,17 +9,31 @@ main{
   display: flex;
 }
 .card-container{
-  background-color: rgb(180, 0, 180);
-  margin: 7px;
+  background-color: gray;
   border-radius: 3px;
   width: 20%;
   max-width: 50%;
   align-items: center;
-  padding: 7px;
+
+  margin: 7px;
+  padding: 7px 6px;
 }
-.card-content{
-  background-color: rgb(255, 0, 255);
+.card-header{
+  background-color: lightgray;
   border-radius: 3px;
   align-self: center;
   text-align: center;
+  margin: 7px;
+  padding: 1px 6px;
+}
+.card-content{
+  background-color: lightgray;
+  border-radius: 3px;
+  align-self: center;
+  text-align: center;
+  margin: 7px;
+  padding: 7px 6px;
+}
+.base-button{
+  margin: 10px;
 }
