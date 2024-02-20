@@ -89,8 +89,6 @@ export default class CustomVisitor extends GoScriptVisitor {
   visitNumberAssign(ctx) {
     // De aqui salen los 3 elementos del array
     console.log('visitNumberAssign');
-    // const value = ctx.expre.getText();
-    // const result = this.visit(ctx.expre());
     const result = this.visitChildren(ctx);
     const id = ctx.ID().getText();
 
