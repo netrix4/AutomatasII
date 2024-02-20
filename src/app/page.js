@@ -12,7 +12,7 @@ export default function HomePage() {
     const temp = analizar(`go {
       says number total;
       says number impuestos;
-      says number suma = 1 + 1;
+      says number suma = 77777;
       says number qwerty;
       };`
     );

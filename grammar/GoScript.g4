@@ -14,7 +14,7 @@ content:  (says NEWLINE)+                                         #WrongVariable
 
 // Talves si solo acpeto todo en id y luego en CustomVisitor lo 
 // filtro con un regex seria mejor
-says:      SAYS NUMBER assignation                                 #ExpreDeclarationInteger
+says:      SAYS NUMBER ID EQU expre                                #ExpreDeclarationInteger
     |      SAYS NUMBER ID                                          #DeclarationInteger
     |      SAYS NUMBER INT                                         #IntWrongDeclarationInteger
     |      SAYS NUMBER expre                                       #ExpreWrongDeclarationInteger
