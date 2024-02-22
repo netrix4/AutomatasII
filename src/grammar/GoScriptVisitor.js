@@ -54,18 +54,6 @@ export default class GoScriptVisitor extends antlr4.tree.ParseTreeVisitor {
 	}
 
 
-	// Visit a parse tree produced by GoScriptParser#DeclarationFloat.
-	visitDeclarationFloat(ctx) {
-	  return this.visitChildren(ctx);
-	}
-
-
-	// Visit a parse tree produced by GoScriptParser#DeclarationCharacter.
-	visitDeclarationCharacter(ctx) {
-	  return this.visitChildren(ctx);
-	}
-
-
 	// Visit a parse tree produced by GoScriptParser#Text.
 	visitText(ctx) {
 	  return this.visitChildren(ctx);
@@ -86,12 +74,6 @@ export default class GoScriptVisitor extends antlr4.tree.ParseTreeVisitor {
 
 	// Visit a parse tree produced by GoScriptParser#SumRes.
 	visitSumRes(ctx) {
-	  return this.visitChildren(ctx);
-	}
-
-
-	// Visit a parse tree produced by GoScriptParser#Float.
-	visitFloat(ctx) {
 	  return this.visitChildren(ctx);
 	}
 

@@ -12,11 +12,9 @@ DISPLAYS: 'displays';
 
 // Symbols
 ID : [a-zA-Z]+;
+INT: [0-9]+;
 NO_ID : [^a-zA-Z]+;
 CHARAS: [a-zA-Z]+;
-DIGIT: [0-9];
-INT: DIGIT+;
-FLOAT: '-'? DIGIT+ ('.' DIGIT+);
 
 DISPLAYEDTEXT: [a-zA-Z0-9]+;
 CBRACEO: '{';
@@ -34,8 +32,5 @@ BRACEO: '[';
 BRACEC: ']';
 TEXT: (.)+?;
 
-
 // Ignoring rules
-// NEWLINE: '\r'? '\n';
-// WS: [ \t]+ -> skip;
 NEWLINE: [\r\n]+;

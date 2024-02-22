@@ -11,16 +11,19 @@ export default function HomePage() {
     
     const temp = analizar(`go {
       says number total;
-      says number impuestos;
-      says number suma = 77777;
-      says number qwerty;
+      says number total;
+      says number impuestos
+      says number 12+33;
+      says number wqqqqq = (30/2)-2;
+      says number vegetta = 7;
+      says number oaisdha;
+      says number pp + i;
       };`
     );
+    
 
-    // console.log(temp);
     const entries = Array.from(temp.entries())
     entries.forEach(item => {
-        // resArray.push('Variable (ID): ' + item[0] + ' Valor: ' + item[1] +' ');
         resArray.push(`Variable ID: ${item[0]} con valor ${item[1]} \n`);
     });
 
