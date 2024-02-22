@@ -19,14 +19,14 @@ export default class CustomVisitor extends GoScriptVisitor {
   
   // Visit a parse tree produced by GoScriptParser#StatesVariable.
   visitStatesVariable(ctx) {
-    return this.visitChildren(ctx);
-
-    // if (ctx.SCOLON(0).getText()) {
-    //   console.log('Si tuvo smcolon');
-    // }
-    // else{
-    //   console.error('No tuvo semicolon, arreglaro para continuar');
-    // }
+    
+    if (ctx.SCOLON(0).getText()) {
+      console.log('Si tuvo smcolon');
+      return this.visitChildren(ctx);
+    }
+    else{
+      console.error('No tuvo semicolon, arreglaro para continuar');
+    }
   }
 
   // Visit a parse tree produced by GoScriptParser#WrongVariableStating.
@@ -106,7 +106,7 @@ export default class CustomVisitor extends GoScriptVisitor {
 
   // Visit a parse tree produced by GoScriptParser#MultDiv.
   visitMultDiv(ctx) {
-    console.log('Esto es una multiplicacion o division');
+    // console.log('Esto es una multiplicacion o division');
     const left = this.visit(ctx.expre(0));	// Get value of left element subexpression
 		const right = this.visit(ctx.expre(1));	// Get value of right element subexpression
 
@@ -120,7 +120,7 @@ export default class CustomVisitor extends GoScriptVisitor {
   
   // Visit a parse tree produced by GoScriptParser#SumRes.
   visitSumRes(ctx) {
-    console.log('Visit sum res');
+    // console.log('Visit sum res');
     const left = this.visit(ctx.expre(0));  // Get value of left element subexpression
     const right = this.visit(ctx.expre(1));	// Get value of right element subexpression
 
