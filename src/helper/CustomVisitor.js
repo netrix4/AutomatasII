@@ -1,4 +1,4 @@
-import antlr4 from 'antlr4';
+// import antlr4 from 'antlr4';
 import GoScriptVisitor from "../..//src/grammar/GoScriptVisitor.js";
 import GoScriptLexer from "../../src/grammar/GoScriptLexer.js";
 
@@ -21,7 +21,7 @@ export default class CustomVisitor extends GoScriptVisitor {
   visitStatesVariable(ctx) {
     
     if (ctx.SCOLON(0).getText()) {
-      console.log('Si tuvo smcolon');
+      console.log('Si tuvo semicolon');
       return this.visitChildren(ctx);
     }
     else{
