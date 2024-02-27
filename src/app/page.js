@@ -1,55 +1,39 @@
 'use client'
-import React, { useState } from 'react'
-import { analizar } from '../module/generator'
+import React, { useState } from 'react';
+import { analizar } from '../module/generator';
+import InputFormater from '../helper/InputFormater';
+import InputAnalizer from "../helper/InputAnalizer";
 
 export default function HomePage() {
   const [inputUser, setInputUser] = useState(`go{\n\n};`);
   const [results, setResults] = useState('');
-  // const [linesInputUser, setlinesInputUser] = useState('');
-  const lineNum = [];
-  let contador = 1;
-    
-  while(contador < 27){
-    lineNum.push(`${contador.toString()}\n`);
-    contador++;
-  }
+  const [linesInputUser, setLinesInputUser] = useState(['1\n','2\n','3\n']);
+
+  const inputFormater = new InputFormater();
+  const inputAnalizer = new InputAnalizer();
 
   const onTextInputChange = (event) =>{
+    // event.preventDefault();
     setInputUser(event.target.value);
+    const numberOfLines = inputAnalizer.countInstructionsRows(inputUser);
 
-    // console.log(event.target.value.match(/[\r\n]+/g));
-    // const numONewLines = event.target.value.match(/[\r\n]+/g)?.length;
-    // const lineNum = [];
-    // let contador = 1;
-    // console.log(numONewLines)
-    
-    // while(contador < numONewLines){
-    //   lineNum.push(`${contador.toString()}\n`);
-    //   contador++;
-    // }
-    // setlinesInputUser(lineNum);
+    if (numberOfLines.length>3) {
+      setLinesInputUser(numberOfLines);      
+    }
+    else{
+      setLinesInputUser(['1\n','2\n','3\n']);
+    }
   }
 
-  function onCompileClick(e) {
-    e.preventDefault();
-    const resArray = []
-    
-    // const entrada = `go {
-    //   says number total;
-    //   says number total;
-    //   says number impuestos
-    //   says number 12+33;
-    //   says number wqqqqq = (30/2)-2;
-    //   says number vegetta = 7;
-    //   says number oaisdha;
-    //   says number pp + i;
-    //   };`;
+  function onCompileClick(event) {
+    event.preventDefault();
+    const resArray = [];
+    const inputWithNoComments = inputFormater.ignoreComments(inputUser);
+    const responses = analizar(inputWithNoComments);
+    const entries = Array.from(responses.entries());
 
-    const temp = analizar(inputUser);
-
-    const entries = Array.from(temp.entries())
-    entries.forEach(item => {
-        resArray.push(`Variable ID: ${item[0]} con valor ${item[1]} \n`);
+    entries?.forEach(item => {
+        resArray.push(`Variable ID: '${item[0]}' con valor ${item[1]} \n`);
     });
 
     setResults(resArray)
@@ -64,12 +48,11 @@ export default function HomePage() {
       <div className='card-element-content' id="cardContent">
         <p htmlFor="inputAutom">Ingresa tu código fuente en GoScript y haz click en el botón para compilar</p>
         <div className='input-container' id = 'inputContainer'>
-          {/* <pre>{linesInputUser}</pre> */}
-          <pre>{lineNum}</pre>
+          <pre>{linesInputUser}</pre>
           <textarea id="inputText" value={inputUser} onChange={onTextInputChange}></textarea>
         </div>
         <button id="compile" onClick={onCompileClick}>Compilar</button>
-        <p >{results}</p>
+        <pre>{results}</pre>
       </div>
     </div>
   );

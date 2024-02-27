@@ -1,5 +1,4 @@
-// import antlr4 from 'antlr4';
-import GoScriptVisitor from "../..//src/grammar/GoScriptVisitor.js";
+import GoScriptVisitor from "../../src/grammar/GoScriptVisitor.js";
 import GoScriptLexer from "../../src/grammar/GoScriptLexer.js";
 
 
@@ -11,7 +10,7 @@ export default class CustomVisitor extends GoScriptVisitor {
   
   // Visit a parse tree produced by GoScriptParser#big_bang.
 	visitBig_bang(ctx) {
-    console.log('Aqui comienzan las visitas');
+    console.warn('Aqui comienzan las visitas');
     this.visitChildren(ctx);
     console.log(this.Memory);
     return this.Memory;
@@ -19,46 +18,53 @@ export default class CustomVisitor extends GoScriptVisitor {
   
   // Visit a parse tree produced by GoScriptParser#StatesVariable.
   visitStatesVariable(ctx) {
-    
-    if (ctx.SCOLON(0).getText()) {
-      console.log('Si tuvo semicolon');
-      return this.visitChildren(ctx);
-    }
-    else{
-      console.error('No tuvo semicolon, arreglaro para continuar');
-    }
+    return this.visitChildren(ctx);
+    // const saysStatemants = ctx.says();
+    // // console.log(saysStatemants[0].SCOLON().getText());
+    // console.log(saysStatemants[0].getText());
+    // console.log(saysStatemants[0].assignation().SCOLON().getText());
+
+    // // saysStatemants.forEach(item => {
+    // //   console.log(item.getText());
+
+    // // });
+    // if (ctx.says(2).assignation().SCOLON().getText()) {
+    //   console.log('Si tuvo semicolon');
+    //   return this.visitChildren(ctx);
+    // }
+    // else{
+    //   console.error('No tuvo semicolon, arreglaro para continuar');
+    // }
   }
 
-  // Visit a parse tree produced by GoScriptParser#WrongVariableStating.
-	visitWrongVariableStating(ctx) {
-    console.log('Te falta un punto y coma, mi buen')
+  // Visit a parse tree produced by GoScriptParser#NoSColonDeclarationInteger.
+  visitNoSColonDeclarationInteger(ctx) {
+    console.error('Te falta un punto y coma, mi buen');
 	  return this.visitChildren(ctx);
 	}
   
   // Visit a parse tree produced by GoScriptParser#DeclarationWrongInteger.
 	visitIntWrongDeclarationInteger(ctx) {
-    console.log('No puedes usar un numero como nombre de variable');
+    console.error('No puedes usar un numero como nombre de variable');
 	  return this.visitChildren(ctx);
 	}
 
   // Visit a parse tree produced by GoScriptParser#ExpreWrongDeclarationInteger.
 	visitExpreWrongDeclarationInteger(ctx) {
-    console.log('No puedes usar una expresion como nombre de variable');
+    console.error('No puedes usar una expresion como nombre de variable');
 	  return this.visitChildren(ctx);
 	}
-  
-  // Visit a parse tree produced by GoScriptParser#ExpreTWODeclarationInteger.
-	visitExpreTWODeclarationInteger(ctx) {
-    console.log('holamundo')
-	  return this.visitChildren(ctx);
-	}
+
   // Visit a parse tree produced by GoScriptParser#DeclarationInteger.
   visitDeclarationInteger(ctx) {
+    // console.log(ctx.getText());
+    // const lastToken = //
+
     const id = ctx.ID().getText();
     const value = 0;
 
     if (this.Memory.has(id)) {
-      console.log('No puedes declarar dos veces una misma variable');
+      console.error('No puedes declarar dos veces una misma variable');
     } 
     else {
       this.Memory.set(id, value);     // Guarda el valor en "memoria"
@@ -71,7 +77,12 @@ export default class CustomVisitor extends GoScriptVisitor {
   // Visit a parse tree produced by GoScriptParser#ExpreDeclarationInteger.
 	visitExpreDeclarationInteger(ctx) {
     // console.log('visitExpreDeclarationInteger');
+	  return this.visit(ctx.assignation());
+	}
 
+  // Visit a parse tree produced by GoScriptParser#ExpreAssign.
+  visitExpreAssign(ctx){
+    // console.log('visitExpreAssgination');
     // const assignExpreValue = [this.visit(ctx.assignation())];
     const id = ctx.ID().getText();
     const value = this.visit(ctx.expre());
@@ -85,23 +96,7 @@ export default class CustomVisitor extends GoScriptVisitor {
       this.Memory.set(id, value);     // Guarda el valor en "memoria"
       console.log('Id para guardar: '+ id + ' <- Valor: ' + this.Memory.get(id));
     }
-	  return 0;
-	  // return this.visitChildren(ctx);
-	}
-  
-  // Visit a parse tree produced by GoScriptParser#NumberAssign.
-  visitNumberAssign(ctx) {
-    // // De aqui salen los 3 elementos del array
-    // console.log('visitNumberAssign');
-
-    // const result = this.visitChildren(ctx);
-    // const id = ctx.ID().getText();
-
-    // const response = [id,result]
-    // console.log(response)
-    // return response;
-    return this.visitChildren(ctx);
-
+    return 0;
   }
 
   // Visit a parse tree produced by GoScriptParser#MultDiv.
@@ -141,21 +136,6 @@ export default class CustomVisitor extends GoScriptVisitor {
     return this.visitChildren(ctx);
   }
   
-  // Visit a parse tree produced by GoScriptParser#DeclarationFloat.
-  visitDeclarationFloat(ctx) {
-    return this.visitChildren(ctx);
-  }
-
-  // Visit a parse tree produced by GoScriptParser#DeclarationCharacter.
-  visitDeclarationCharacter(ctx) {
-    return this.visitChildren(ctx);
-  }
-
-  // Visit a parse tree produced by GoScriptParser#CharacterAssgin.
-  visitCharacterAssgin(ctx) {
-    return this.visitChildren(ctx);
-  }
-
   // Visit a parse tree produced by GoScriptParser#Parenthesis.
   visitParenthesis(ctx) {
     return this.visit(ctx.expre());
@@ -164,7 +144,6 @@ export default class CustomVisitor extends GoScriptVisitor {
 
   // Visit a parse tree produced by GoScriptParser#Id.
   visitId(ctx) {
-    console.log('No puedes poner una expresion de ids como nombre');
     const id = ctx.ID().getText();
     if (this.Memory.has(id)) {
         return this.Memory.get(id);
@@ -172,14 +151,11 @@ export default class CustomVisitor extends GoScriptVisitor {
     return 0;
   }
 
-
   // Visit a parse tree produced by GoScriptParser#Int.
   visitInt(ctx) {
     const number = Number(ctx.getText());
     return number;
     // return parseInt(ctx.getText());
   }
-
-  
 
 }

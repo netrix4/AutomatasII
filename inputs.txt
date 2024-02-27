@@ -1,0 +1,115 @@
+// Inputs for Automatas II`s test 1
+go {
+says number a;
+int b;
+int c;
+int d = 10;
+}
+
+void main() {
+int a;
+int b;
+int c;
+int d = 10;
+int e;
+int f;
+int g = 10 + 20;
+}
+
+void main() {
+int a = (10*10)/10;
+int b = (20+10)*20;
+int c = 10+(10/2)*1;
+int d = 10;
+}
+
+
+go {
+  says number a;
+  says number b;
+  says number c;
+  says number d = 10;
+};
+  
+go {
+  says number a;
+  says number b;
+  says number c;
+  says number d = 10;
+  says number e;
+  says number f;
+  says number g = 10 + 20;
+};
+  
+go {
+  says number a = (10*10)/10;
+  says number b = (20+10)*20;
+  says number c = 10+(10/2)*1;
+  says number d = 10;
+};
+
+
+
+
+
+// Inputs to test that everythings works fine
+
+go {
+       says number total=2*4;
+       says number a = 99+1;
+       says number zZz = 2012;
+       says number impuestos;
+       says number b = (26*4)-4;
+};
+
+// With errors un purpouse
+go {
+      says number total;
+      says number total;
+      says number impuestos
+      says number 12+33;
+      says number wqqqqq = (30/2)-2;
+      says number vegetta = 7;
+      says number oaisdha;
+      says number pp + i;
+};
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div className='card-element-wrapper'>
+      <div className='card-element-header'>
+        <h2>Compilador Online</h2>
+      </div>
+      <div className='card-element-content' id="cardContent">
+        <p htmlFor="inputAutom">Ingresa tu código fuente en GoScript y haz click en el botón para compilar</p>
+        <div className='input-container' id = 'inputContainer'>
+          <pre>{linesInputUser}</pre>
+          <pre>{lineNum}</pre>
+          <textarea id="inputText" value={inputUser} onChange={onTextInputChange}></textarea>
+        </div>
+        <button id="compile" onClick={onCompileClick}>Compilar</button>
+        <p >{results}</p>
+      </div>
+    </div>
