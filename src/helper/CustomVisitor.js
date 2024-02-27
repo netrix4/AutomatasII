@@ -10,6 +10,7 @@ export default class CustomVisitor extends GoScriptVisitor {
   
   // Visit a parse tree produced by GoScriptParser#big_bang.
 	visitBig_bang(ctx) {
+    //last commit before refactor on uncatched grammar errors
     console.warn('Aqui comienzan las visitas');
     this.visitChildren(ctx);
     console.log(this.Memory);
