@@ -30,7 +30,7 @@ export default function HomePage() {
     console.clear();
     const resArray = [];
     const inputWithNoComments = inputFormater.ignoreComments(inputUser);
-    const preAnalizedResponse = inputAnalizer.preAnalize(inputWithNoComments); //<-
+    const preAnalizedResponse = inputAnalizer.preAnalize(inputWithNoComments);
 
     if (preAnalizedResponse === '') {
       const responses = analizar(inputWithNoComments);

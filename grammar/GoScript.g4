@@ -11,10 +11,7 @@ content:        (says)+                                                      #St
 
 //Declaration diferent types of variables
 says:           SAYS NUMBER assignation                                      #ExpreDeclarationInteger
-    |           SAYS NUMBER ID                                               #NoSColonDeclarationInteger
     |           SAYS NUMBER ID SCOLON                                        #DeclarationInteger
-    |           SAYS NUMBER INT SCOLON                                       #IntWrongDeclarationInteger
-    |           SAYS NUMBER expre SCOLON                                     #ExpreWrongDeclarationInteger
 ;
 
 // printf equivalent function
