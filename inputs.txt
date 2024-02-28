@@ -64,52 +64,12 @@ go {
 
 // With errors un purpouse
 go {
-      says number total;
-      says number total;
-      says number impuestos
       says number 12+33;
       says number wqqqqq = (30/2)-2;
       says number vegetta = 7;
+      says number impuestos
+      says number total;
+      says number total;
       says number oaisdha;
       says number pp + i;
 };
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<div className='card-element-wrapper'>
-      <div className='card-element-header'>
-        <h2>Compilador Online</h2>
-      </div>
-      <div className='card-element-content' id="cardContent">
-        <p htmlFor="inputAutom">Ingresa tu código fuente en GoScript y haz click en el botón para compilar</p>
-        <div className='input-container' id = 'inputContainer'>
-          <pre>{linesInputUser}</pre>
-          <pre>{lineNum}</pre>
-          <textarea id="inputText" value={inputUser} onChange={onTextInputChange}></textarea>
-        </div>
-        <button id="compile" onClick={onCompileClick}>Compilar</button>
-        <p >{results}</p>
-      </div>
-    </div>

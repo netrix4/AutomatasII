@@ -27,16 +27,26 @@ export default function HomePage() {
 
   function onCompileClick(event) {
     event.preventDefault();
+    console.clear();
     const resArray = [];
     const inputWithNoComments = inputFormater.ignoreComments(inputUser);
-    const responses = analizar(inputWithNoComments);
-    const entries = Array.from(responses.entries());
+    const preAnalizedResponse = inputAnalizer.preAnalize(inputWithNoComments); //<-
 
-    entries?.forEach(item => {
-        resArray.push(`Variable ID: '${item[0]}' con valor ${item[1]} \n`);
-    });
-
-    setResults(resArray)
+    if (preAnalizedResponse === '') {
+      const responses = analizar(inputWithNoComments);
+      const entries = Array.from(responses.entries());
+  
+      entries?.forEach(item => {
+          resArray.push(`Variable ID: '${item[0]}' con valor ${item[1]} \n`);
+      });
+  
+      setResults(resArray);
+      
+    }
+    else{
+      setResults(preAnalizedResponse)
+      console.error('Arregla tus misinputs para continuar');
+    }
 
   }
 
