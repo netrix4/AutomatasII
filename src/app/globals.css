@@ -71,10 +71,18 @@ text-align: center;
   justify-content: center;
   resize: none;
 }
-.input-container > pre {
+/* .input-container > pre { */
+.compiling-feedback{
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  /* align-items: center; */
+}
+.code-lines-counter{
   padding: 0%;
   margin: 0%;
   width: 5%;
+  max-width: inherit;
   height: var(--input-height);
 
 }

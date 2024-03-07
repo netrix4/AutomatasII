@@ -19,7 +19,8 @@ export default class InputAnalizer {
         /**
          * Verifies if every row in inputs ends with a semicolon
          */
-        const hasSColonReg = /^(?!go {).*[^;]$/gm; // identifica los renglones sin punto y coma
+        // const hasSColonReg = /^(?!go {).*[^;]$/gm; // identifica los renglones sin punto y coma
+        const hasSColonReg = /^(?!go {).*[^; ?]$/gm; // identifica los renglones sin punto y coma
 
         if (hasSColonReg.test(inputWithNoComments)) {
             const feedback = 'Te falta un punto y coma, mi buen';
@@ -47,12 +48,12 @@ export default class InputAnalizer {
         const noRepeatedIdReg = /(number ?\w+)/gm; //Identifica los ids
         const idsArray = inputWithNoComments.match(noRepeatedIdReg);
 
-        let  idsCopy = idsArray.slice(0);
+        let  idsCopy = idsArray?.slice(0);
         let counter = 0;
         let areThereDuplicated = false;
         let temp;
 
-        while (counter < idsArray.length) {
+        while (counter < idsArray?.length) {
             temp = idsCopy[counter];
             idsCopy[counter] = '';
 

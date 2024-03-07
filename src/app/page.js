@@ -30,22 +30,26 @@ export default function HomePage() {
     console.clear();
     const resArray = [];
     const inputWithNoComments = inputFormater.ignoreComments(inputUser);
-    const preAnalizedResponse = inputAnalizer.preAnalize(inputWithNoComments);
+    const responses = analizar(inputWithNoComments);
+    let preAnalizedResponse = inputAnalizer.preAnalize(inputWithNoComments);
+    
+    responses.errors.forEach(ANTLRerror => {
+      preAnalizedResponse += ANTLRerror.error_msg;
+    });
 
-    if (preAnalizedResponse === '') {
-      const responses = analizar(inputWithNoComments);
-      const entries = Array.from(responses.entries());
+    // if (preAnalizedResponse === '') {
+    if (preAnalizedResponse === '' && !responses?.errors[0]) {
+
+      const entries = Array.from(responses.temp.entries());
   
       entries?.forEach(item => {
-          resArray.push(`Variable ID: '${item[0]}' con valor ${item[1]} \n`);
+        resArray.push(`Variable ID: '${item[0]}' con valor ${item[1]}\n`);
       });
-  
       setResults(resArray);
-      
     }
     else{
-      setResults(preAnalizedResponse)
-      console.error('Arregla tus misinputs para continuar');
+      setResults(preAnalizedResponse);
+      console.error('Arregla tus missinputs para continuar');
     }
 
   }
@@ -58,11 +62,11 @@ export default function HomePage() {
       <div className='card-element-content' id="cardContent">
         <p htmlFor="inputAutom">Ingresa tu código fuente en GoScript y haz click en el botón para compilar</p>
         <div className='input-container' id = 'inputContainer'>
-          <pre>{linesInputUser}</pre>
+          <pre className='code-lines-counter'>{linesInputUser}</pre>
           <textarea id="inputText" value={inputUser} onChange={onTextInputChange}></textarea>
         </div>
         <button id="compile" onClick={onCompileClick}>Compilar</button>
-        <pre>{results}</pre>
+        <pre className='compiling-feedback'>{results}</pre>
       </div>
     </div>
   );

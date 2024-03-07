@@ -73,3 +73,62 @@ go {
       says number oaisdha;
       says number pp + i;
 };
+
+// 4 marzo
+void main() {
+a = a;
+}
+
+void main() {
+int a 20;
+}
+
+void main() {
+int a;
+int b = 20;
+int c 20;
+}
+
+void main() {
+int a;
+int = 20;
+}
+
+void main() {
+int 20;
+int 30;
+int a = 20;
+}
+------------- //4 marzo
+go {
+  a = a;
+};
+
+go {
+  says number a 20;
+};
+
+go {
+  says number a;
+  says number b = 20;
+  says number c 20;
+};
+
+go {
+  says number a;
+  says number = 20;
+};
+
+go {
+  says number 20;
+  says number 30;
+  says number a = 20;
+};
+
+personalizados de logica
+sin personalizado de antlr4
+
+asignacion Si la variable no exites no se agigna
+impresionnnnnn 
+
+documentar todo lo que he hecho
