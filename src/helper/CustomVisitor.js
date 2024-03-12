@@ -16,15 +16,20 @@ export default class CustomVisitor extends GoScriptVisitor {
     return this.Memory;
   }
   
-  // Visit a parse tree produced by GoScriptParser#StatesVariable.
-  visitStatesVariable(ctx) {
-    return this.visitChildren(ctx);
-  }
-
-  // Visit a parse tree produced by GoScriptParser#PrintsOnDisplay.
-	visitPrintsOnDisplay(ctx) {
+  // Visit a parse tree produced by GoScriptParser#GoContent.
+	visitGoContent(ctx) {
 	  return this.visitChildren(ctx);
 	}
+
+  // // Visit a parse tree produced by GoScriptParser#StatesVariable.
+  // visitStatesVariable(ctx) {
+  //   return this.visitChildren(ctx);
+  // }
+
+  // // Visit a parse tree produced by GoScriptParser#PrintsOnDisplay.
+	// visitPrintsOnDisplay(ctx) {
+	//   return this.visitChildren(ctx);
+	// }
 
   // Visit a parse tree produced by GoScriptParser#DeclarationInteger.
   visitDeclarationInteger(ctx) {

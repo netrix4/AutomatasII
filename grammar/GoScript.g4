@@ -5,11 +5,11 @@ import GoScriptRules;
 big_bang:       GO CBRACEO content? CBRACEC SCOLON;
 
 // Allowed content
-content:        (says)+                                                      #StatesVariable
-    |           (displays)+                                                  #PrintsOnDisplay
-;
-// content:        (says | displays)+                                           #GoContent
+// content:        (says)+                                                      #StatesVariable
+//     |           (displays)+                                                  #PrintsOnDisplay
 // ;
+content:        (says | displays)+                                           #GoContent
+;
 
 //Declaration diferent types of variables
 says:           SAYS NUMBER assignation                                      #ExpreDeclarationInteger
