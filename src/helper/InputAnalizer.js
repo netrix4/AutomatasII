@@ -20,7 +20,7 @@ export default class InputAnalizer {
          * Verifies if every row in inputs ends with a semicolon
          */
         // const hasSColonReg = /^(?!go {).*[^;]$/gm; // identifica los renglones sin punto y coma
-        const hasSColonReg = /^(?!go {).*[^; ?]$/gm; // identifica los renglones sin punto y coma
+        const hasSColonReg = /^(?!go ?{).*[^; ?]$/gm; // identifica los renglones sin punto y coma
 
         if (hasSColonReg.test(inputWithNoComments)) {
             const feedback = 'Te falta un punto y coma, mi buen';

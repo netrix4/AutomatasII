@@ -21,6 +21,11 @@ export default class CustomVisitor extends GoScriptVisitor {
     return this.visitChildren(ctx);
   }
 
+  // Visit a parse tree produced by GoScriptParser#PrintsOnDisplay.
+	visitPrintsOnDisplay(ctx) {
+	  return this.visitChildren(ctx);
+	}
+
   // Visit a parse tree produced by GoScriptParser#DeclarationInteger.
   visitDeclarationInteger(ctx) {
     const id = ctx.ID().getText();
@@ -65,7 +70,7 @@ export default class CustomVisitor extends GoScriptVisitor {
 			return left * right;			
 		}
 		else{
-			return left / right // must be DIV so
+			return left / right; // must be DIV so
 		}
   }
   
@@ -81,19 +86,24 @@ export default class CustomVisitor extends GoScriptVisitor {
       return left - right;	// must be SUB so
     }
   }
+
   // Visit a parse tree produced by GoScriptParser#CharacterAssgin.
 	visitCharacterAssgin(ctx) {
 	  return this.visitChildren(ctx);
 	}
+
   // Visit a parse tree produced by GoScriptParser#DisplaysText.
   visitDisplaysText(ctx) {
+    // if (this.Memory.has(ctx.vaiable().getText())) {
+    // }
+
+    const tempResp = ctx.TTX().getText().slice(1,-1);
+    this.Memory.set(tempResp,tempResp);
+
+    // return tempResp;
     return this.visitChildren(ctx);
   }
 
-  // Visit a parse tree produced by GoScriptParser#Text.
-  visitText(ctx) {
-    return this.visitChildren(ctx);
-  }
   
   // Visit a parse tree produced by GoScriptParser#Parenthesis.
   visitParenthesis(ctx) {

@@ -18,8 +18,8 @@ export default class GoScriptVisitor extends antlr4.tree.ParseTreeVisitor {
 	}
 
 
-	// Visit a parse tree produced by GoScriptParser#DisplaysText.
-	visitDisplaysText(ctx) {
+	// Visit a parse tree produced by GoScriptParser#PrintsOnDisplay.
+	visitPrintsOnDisplay(ctx) {
 	  return this.visitChildren(ctx);
 	}
 
@@ -36,12 +36,6 @@ export default class GoScriptVisitor extends antlr4.tree.ParseTreeVisitor {
 	}
 
 
-	// Visit a parse tree produced by GoScriptParser#Text.
-	visitText(ctx) {
-	  return this.visitChildren(ctx);
-	}
-
-
 	// Visit a parse tree produced by GoScriptParser#ExpreAssign.
 	visitExpreAssign(ctx) {
 	  return this.visitChildren(ctx);
@@ -50,6 +44,12 @@ export default class GoScriptVisitor extends antlr4.tree.ParseTreeVisitor {
 
 	// Visit a parse tree produced by GoScriptParser#CharacterAssgin.
 	visitCharacterAssgin(ctx) {
+	  return this.visitChildren(ctx);
+	}
+
+
+	// Visit a parse tree produced by GoScriptParser#DisplaysText.
+	visitDisplaysText(ctx) {
 	  return this.visitChildren(ctx);
 	}
 

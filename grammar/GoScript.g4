@@ -6,21 +6,25 @@ big_bang:       GO CBRACEO content? CBRACEC SCOLON;
 
 // Allowed content
 content:        (says)+                                                      #StatesVariable
-    |           (displays)+                                                  #DisplaysText
+    |           (displays)+                                                  #PrintsOnDisplay
 ;
+// content:        (says | displays)+                                           #GoContent
+// ;
 
 //Declaration diferent types of variables
 says:           SAYS NUMBER assignation                                      #ExpreDeclarationInteger
     |           SAYS NUMBER ID SCOLON                                        #DeclarationInteger
 ;
 
-// printf equivalent function
-displays:       DISPLAYS BRACEO DQUOTE TEXT NEWLINE? DQUOTE BRACEC SCOLON    #Text
-;
-
 // Assignation to an existing variable
 assignation:    ID EQU expre SCOLON                                          #ExpreAssign
     |           ID EQU DQUOTE CHARAS DQUOTE                                  #CharacterAssgin
+;
+
+// printf equivalent function
+// displays:       DISPLAYS BRACEO DQUOTE TTX NEWLINE? DQUOTE BRACEC SCOLON    #DisplaysText
+// displays:       DISPLAYS BRACEO DQUOTE 'ALGO' DQUOTE BRACEC SCOLON    #DisplaysText
+displays:       DISPLAYS BRACEO TTX NEWLINE? BRACEC SCOLON                   #DisplaysText
 ;
 
 // Aritmetical expression

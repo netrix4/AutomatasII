@@ -19,6 +19,7 @@ CHARAS: [a-zA-Z]+;
 DISPLAYEDTEXT: [a-zA-Z0-9]+;
 CBRACEO: '{';
 CBRACEC: '}';
+TTX: DQUOTE[a-zA-Z0-9 ]+DQUOTE;
 SCOLON: ';';
 EQU: '=';
 STAR: '*';
@@ -30,7 +31,6 @@ PC: ')';
 DQUOTE: '"';
 BRACEO: '[';
 BRACEC: ']';
-TEXT: (.)+?;
 
 // Ignoring rules
 NEWLINE: [\r\n]+;
