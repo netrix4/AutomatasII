@@ -125,6 +125,59 @@ go {
   says number a = 20;
 };
 
+
+go{
+   displays ["John Doe"];
+   displays ["Jane Doe"];
+   displays ["Una Vida No Es Suficiente"];
+   says number asda = 66;
+   displays ["asdashdbasd"];
+};
+
+
+// Actividad de prueba 12 marzo
+void main() {
+int a = 20;
+int b = 40;
+int c = a + b;
+printf(c);
+}
+
+void main() {
+int a = 20;
+int b = 40;
+c = a + b;
+printf(c);
+}
+
+void main() {
+int a = 20;
+int b = 40;
+printf(a + b);
+}
+
+go{
+  says number a = 20;
+  says number b = 40;
+  says number c = b + a;
+  displays [c];
+};
+
+go{
+  says number a = 20;
+  says number b = 40;
+  c = a + b;
+  displays [c];
+};
+
+go{
+  says number a = 20;
+  says number b = 40;
+  displays [a+b];
+};
+
+
+
 personalizados de logica
 sin personalizado de antlr4
 
@@ -132,3 +185,20 @@ asignacion Si la variable no exites no se agigna
 impresionnnnnn 
 
 documentar todo lo que he hecho
+
+
+ToDo 12 de marzo
+if (condicion){...}
+
+if: if parent condicion paen cbrace content cbrace
+
+condicion: expre < expre
+ expre > expre
+ expre == expre
+
+ go{
+   displays ["Comoooooo"];
+   says number a = 99;
+   displays ["de nada"];
+   displays [a];
+};

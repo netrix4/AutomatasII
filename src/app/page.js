@@ -14,9 +14,9 @@ export default function HomePage() {
 
   const onTextInputChange = (event) =>{
     // event.preventDefault();
-    setInputUser(event.target.value);
-    const numberOfLines = inputAnalizer.countInstructionsRows(inputUser);
-
+    const newInput = event.target.value;
+    setInputUser(newInput);
+    const numberOfLines = inputAnalizer.countInstructionsRows(newInput);
     if (numberOfLines.length>3) {
       setLinesInputUser(numberOfLines);      
     }
@@ -31,19 +31,20 @@ export default function HomePage() {
     const resArray = [];
     const inputWithNoComments = inputFormater.ignoreComments(inputUser);
     const responses = analizar(inputWithNoComments);
+    console.log('asda')
     let preAnalizedResponse = inputAnalizer.preAnalize(inputWithNoComments);
     
     responses.errors.forEach(ANTLRerror => {
       preAnalizedResponse += ANTLRerror.error_msg;
     });
-
-    // if (preAnalizedResponse === '') {
+    
     if (preAnalizedResponse === '' && !responses?.errors[0]) {
+      // setResults(responses.temp);
 
-      const entries = Array.from(responses.temp.entries());
+      // const entries = Array.from(responses.temp.entries());
   
-      entries?.forEach(item => {
-        resArray.push(`Variable ID: '${item[0]}' con valor ${item[1]}\n`);
+      responses.temp?.forEach(item => {
+        resArray.push(`Ouput en pantalla: '${item}'\n`);
       });
       setResults(resArray);
     }

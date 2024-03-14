@@ -82,4 +82,5 @@ export default class InputAnalizer {
 
         return lines;
     }
+    
 }

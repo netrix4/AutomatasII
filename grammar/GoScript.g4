@@ -5,9 +5,6 @@ import GoScriptRules;
 big_bang:       GO CBRACEO content? CBRACEC SCOLON;
 
 // Allowed content
-// content:        (says)+                                                      #StatesVariable
-//     |           (displays)+                                                  #PrintsOnDisplay
-// ;
 content:        (says | displays)+                                           #GoContent
 ;
 
@@ -17,14 +14,15 @@ says:           SAYS NUMBER assignation                                      #Ex
 ;
 
 // Assignation to an existing variable
+// ToDo: String or character assgins
 assignation:    ID EQU expre SCOLON                                          #ExpreAssign
     |           ID EQU DQUOTE CHARAS DQUOTE                                  #CharacterAssgin
 ;
 
 // printf equivalent function
-// displays:       DISPLAYS BRACEO DQUOTE TTX NEWLINE? DQUOTE BRACEC SCOLON    #DisplaysText
-// displays:       DISPLAYS BRACEO DQUOTE 'ALGO' DQUOTE BRACEC SCOLON    #DisplaysText
 displays:       DISPLAYS BRACEO TTX NEWLINE? BRACEC SCOLON                   #DisplaysText
+    // |           DISPLAYS BRACEO expre NEWLINE? BRACEC SCOLON                 #DisplaysExpression
+    |           DISPLAYS BRACEO ID NEWLINE? BRACEC SCOLON                    #DisplaysVariable
 ;
 
 // Aritmetical expression

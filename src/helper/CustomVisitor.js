@@ -1,11 +1,14 @@
 import GoScriptVisitor from "../../src/grammar/GoScriptVisitor.js";
 import GoScriptLexer from "../../src/grammar/GoScriptLexer.js";
+import InputAnalizer from "./InputAnalizer.js";
 
 
 export default class CustomVisitor extends GoScriptVisitor {	
   constructor() {
       super();
+      this.InputAnalizer = new InputAnalizer();
       this.Memory = new Map()
+      this.TextToDisplay = [];
   }
   
   // Visit a parse tree produced by GoScriptParser#big_bang.
@@ -13,23 +16,14 @@ export default class CustomVisitor extends GoScriptVisitor {
     console.warn('Aqui comienzan las visitas');
     this.visitChildren(ctx);
     console.log(this.Memory);
-    return this.Memory;
+    // return this.Memory;
+    return this.TextToDisplay;
   }
   
   // Visit a parse tree produced by GoScriptParser#GoContent.
 	visitGoContent(ctx) {
 	  return this.visitChildren(ctx);
 	}
-
-  // // Visit a parse tree produced by GoScriptParser#StatesVariable.
-  // visitStatesVariable(ctx) {
-  //   return this.visitChildren(ctx);
-  // }
-
-  // // Visit a parse tree produced by GoScriptParser#PrintsOnDisplay.
-	// visitPrintsOnDisplay(ctx) {
-	//   return this.visitChildren(ctx);
-	// }
 
   // Visit a parse tree produced by GoScriptParser#DeclarationInteger.
   visitDeclarationInteger(ctx) {
@@ -99,16 +93,36 @@ export default class CustomVisitor extends GoScriptVisitor {
 
   // Visit a parse tree produced by GoScriptParser#DisplaysText.
   visitDisplaysText(ctx) {
-    // if (this.Memory.has(ctx.vaiable().getText())) {
-    // }
-
     const tempResp = ctx.TTX().getText().slice(1,-1);
-    this.Memory.set(tempResp,tempResp);
+    this.TextToDisplay.push(tempResp);
 
-    // return tempResp;
-    return this.visitChildren(ctx);
+    return this.TextToDisplay;
   }
 
+  // Visit a parse tree produced by GoScriptParser#DisplaysVariable.
+	visitDisplaysVariable(ctx) {
+    console.log('visitDisplayVariable')
+
+    const variableID = ctx.ID().getText();
+
+    if (this.Memory.has(variableID)) {
+      this.TextToDisplay.push(this.Memory.get(variableID));
+    }
+    else{
+      //ToDo: Aqui debería usarse el objeto de InputAnalizer para saber retornar el mensaje
+      // y tal vez mover todos los anlisis de page.js para este archivo
+
+      this.TextToDisplay.push('La variable no existe'); 
+    }
+
+	  // return this.visitChildren(ctx);
+    return this.TextToDisplay;
+	}
+  
+	// Visit a parse tree produced by GoScriptParser#DisplaysExpression.
+	visitDisplaysExpression(ctx) {
+	  return this.visitChildren(ctx);
+	}
   
   // Visit a parse tree produced by GoScriptParser#Parenthesis.
   visitParenthesis(ctx) {
