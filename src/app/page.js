@@ -31,7 +31,6 @@ export default function HomePage() {
     const resArray = [];
     const inputWithNoComments = inputFormater.ignoreComments(inputUser);
     const responses = analizar(inputWithNoComments);
-    console.log('asda')
     let preAnalizedResponse = inputAnalizer.preAnalize(inputWithNoComments);
     
     responses.errors.forEach(ANTLRerror => {

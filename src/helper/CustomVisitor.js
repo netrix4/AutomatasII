@@ -121,7 +121,13 @@ export default class CustomVisitor extends GoScriptVisitor {
   
 	// Visit a parse tree produced by GoScriptParser#DisplaysExpression.
 	visitDisplaysExpression(ctx) {
-	  return this.visitChildren(ctx);
+	  const tempRes = this.visit(ctx.expre());
+
+    this.TextToDisplay.push(tempRes)
+    console.log(this.TextToDisplay);
+
+
+	  // return this.visitChildren(ctx);
 	}
   
   // Visit a parse tree produced by GoScriptParser#Parenthesis.

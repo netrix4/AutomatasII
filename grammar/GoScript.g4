@@ -21,7 +21,7 @@ assignation:    ID EQU expre SCOLON                                          #Ex
 
 // printf equivalent function
 displays:       DISPLAYS BRACEO TTX NEWLINE? BRACEC SCOLON                   #DisplaysText
-    // |           DISPLAYS BRACEO expre NEWLINE? BRACEC SCOLON                 #DisplaysExpression
+    |           DISPLAYS BRACEO expre NEWLINE? BRACEC SCOLON                 #DisplaysExpression
     |           DISPLAYS BRACEO ID NEWLINE? BRACEC SCOLON                    #DisplaysVariable
 ;
 
