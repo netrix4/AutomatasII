@@ -88,6 +88,10 @@ export default class CustomVisitor extends GoScriptVisitor {
 
   // Visit a parse tree produced by GoScriptParser#CharacterAssgin.
 	visitCharacterAssgin(ctx) {
+    const id = ctx.ID().getText();
+    const value = ctx.TTX().getText().slice(1,-1);
+
+    this.Memory.set(id,value);
 	  return this.visitChildren(ctx);
 	}
 
@@ -101,7 +105,7 @@ export default class CustomVisitor extends GoScriptVisitor {
 
   // Visit a parse tree produced by GoScriptParser#DisplaysVariable.
 	visitDisplaysVariable(ctx) {
-    console.log('visitDisplayVariable')
+    console.log('visitDisplayVariable');
 
     const variableID = ctx.ID().getText();
 
@@ -109,6 +113,7 @@ export default class CustomVisitor extends GoScriptVisitor {
       this.TextToDisplay.push(this.Memory.get(variableID));
     }
     else{
+
       //ToDo: Aqui debería usarse el objeto de InputAnalizer para saber retornar el mensaje
       // y tal vez mover todos los anlisis de page.js para este archivo
 
@@ -122,12 +127,9 @@ export default class CustomVisitor extends GoScriptVisitor {
 	// Visit a parse tree produced by GoScriptParser#DisplaysExpression.
 	visitDisplaysExpression(ctx) {
 	  const tempRes = this.visit(ctx.expre());
-
     this.TextToDisplay.push(tempRes)
-    console.log(this.TextToDisplay);
 
-
-	  // return this.visitChildren(ctx);
+	  return this.visitChildren(ctx);
 	}
   
   // Visit a parse tree produced by GoScriptParser#Parenthesis.

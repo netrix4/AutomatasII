@@ -42,20 +42,14 @@ export default class GoScriptVisitor extends antlr4.tree.ParseTreeVisitor {
 	}
 
 
-	// Visit a parse tree produced by GoScriptParser#DisplaysText.
-	visitDisplaysText(ctx) {
-	  return this.visitChildren(ctx);
-	}
-
-
 	// Visit a parse tree produced by GoScriptParser#DisplaysExpression.
 	visitDisplaysExpression(ctx) {
 	  return this.visitChildren(ctx);
 	}
 
 
-	// Visit a parse tree produced by GoScriptParser#DisplaysVariable.
-	visitDisplaysVariable(ctx) {
+	// Visit a parse tree produced by GoScriptParser#DisplaysText.
+	visitDisplaysText(ctx) {
 	  return this.visitChildren(ctx);
 	}
 

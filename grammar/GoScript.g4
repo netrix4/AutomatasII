@@ -16,13 +16,16 @@ says:           SAYS NUMBER assignation                                      #Ex
 // Assignation to an existing variable
 // ToDo: String or character assgins
 assignation:    ID EQU expre SCOLON                                          #ExpreAssign
-    |           ID EQU DQUOTE CHARAS DQUOTE                                  #CharacterAssgin
+    |           ID EQU TTX SCOLON                                            #CharacterAssgin
 ;
 
 // printf equivalent function
-displays:       DISPLAYS BRACEO TTX NEWLINE? BRACEC SCOLON                   #DisplaysText
-    |           DISPLAYS BRACEO expre NEWLINE? BRACEC SCOLON                 #DisplaysExpression
-    |           DISPLAYS BRACEO ID NEWLINE? BRACEC SCOLON                    #DisplaysVariable
+// displays:       DISPLAYS BRACEO expre NEWLINE? BRACEC SCOLON                 #DisplaysExpression
+//     |           DISPLAYS BRACEO ID NEWLINE? BRACEC SCOLON                    #DisplaysVariable  
+//     |           DISPLAYS BRACEO TTX NEWLINE? BRACEC SCOLON                   #DisplaysText
+// ;
+displays:       DISPLAYS BRACEO expre NEWLINE? BRACEC SCOLON                 #DisplaysExpression
+    |           DISPLAYS BRACEO TTX NEWLINE? BRACEC SCOLON                   #DisplaysText
 ;
 
 // Aritmetical expression

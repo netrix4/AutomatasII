@@ -38,9 +38,6 @@ export default function HomePage() {
     });
     
     if (preAnalizedResponse === '' && !responses?.errors[0]) {
-      // setResults(responses.temp);
-
-      // const entries = Array.from(responses.temp.entries());
   
       responses.temp?.forEach(item => {
         resArray.push(`Ouput en pantalla: '${item}'\n`);
