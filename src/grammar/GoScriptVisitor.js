@@ -84,5 +84,29 @@ export default class GoScriptVisitor extends antlr4.tree.ParseTreeVisitor {
 	}
 
 
+	// Visit a parse tree produced by GoScriptParser#ConditionalSentenceIf.
+	visitConditionalSentenceIf(ctx) {
+	  return this.visitChildren(ctx);
+	}
+
+
+	// Visit a parse tree produced by GoScriptParser#ConditionMoreThan.
+	visitConditionMoreThan(ctx) {
+	  return this.visitChildren(ctx);
+	}
+
+
+	// Visit a parse tree produced by GoScriptParser#ConditionLessThan.
+	visitConditionLessThan(ctx) {
+	  return this.visitChildren(ctx);
+	}
+
+
+	// Visit a parse tree produced by GoScriptParser#ConditionIsEqual.
+	visitConditionIsEqual(ctx) {
+	  return this.visitChildren(ctx);
+	}
+
+
 
 }

@@ -2,13 +2,14 @@ lexer grammar GoScriptRules;
 
 WS : [ \t\n\r]+ -> skip;
 // Reserved Words
-GO: 'go';
+GO: 'go' | 'GO';
 DOTNUM: 'dotnum';
-NUMBER: 'number';
+NUMBER: 'number'|'NUMBER';
 LETTER: 'letter';
-LETTERSTR: 'letterstr';
-SAYS: 'says';
-DISPLAYS: 'displays';
+LETTERSTR: 'letterstr'|'LETTERSTR';
+SAYS: 'says'|'SAYS';
+DISPLAYS: 'displays'|'DISPLAYS';
+IF: 'if'|'IF';
 
 // Symbols
 ID : [a-zA-Z]+;
@@ -31,6 +32,9 @@ PC: ')';
 DQUOTE: '"';
 BRACEO: '[';
 BRACEC: ']';
+GREATERTHAN: '>';
+LESSTHAN: '<';
+
 
 // Ignoring rules
 NEWLINE: [\r\n]+;

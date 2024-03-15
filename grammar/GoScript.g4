@@ -6,7 +6,7 @@ big_bang:       GO CBRACEO content? CBRACEC SCOLON
 ;
 
 // Allowed content
-content:        ( says | displays ) +                                        #GoContent
+content:        ( says | displays | if ) +                                        #GoContent
 ;
 
 //Declaration diferent types of variables
@@ -30,4 +30,11 @@ expre:          expre operation=(STAR | DIAGO) expre                         #Mu
     |           INT                                                          #Int
     |           ID                                                           #Id
     |           PO expre PC                                                  #Parenthesis
+;
+if:             IF PO condition PC CBRACEO content? CBRACEC SCOLON           #ConditionalSentenceIf    
+;
+
+condition:      expre GREATERTHAN expre                                       #ConditionMoreThan
+    |           expre LESSTHAN expre                                          #ConditionLessThan
+    |           expre EQU EQU expre                                           #ConditionIsEqual
 ;

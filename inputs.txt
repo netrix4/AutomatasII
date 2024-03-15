@@ -210,3 +210,30 @@ go{
    says letterstr db = "GOKUUUUU";
    displays [numero+db+q+numero+numero+numero];
 };
+
+go{
+  says number GuanTuTri= 123;
+  says number A = 7;
+  says letterstr db = "GOKUUUUU ";
+  displays [db+GuanTuTri];
+  displays [db+db];
+  displays [db];
+  if(10>4){
+    displays [A+GuanTuTri];
+}
+  
+};
+go{
+  says number A = 7;
+  says number GuanTuTri= 123;
+  displays [GuanTuTri];
+
+  if(10>4){
+    displays [A+GuanTuTri];
+  }
+};
+go{
+  says number A = 7;
+  says number GuanTuTri= 123;
+  if(10<4){ displays [A]; };
+};

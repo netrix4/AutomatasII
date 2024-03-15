@@ -3,31 +3,40 @@
 import antlr4 from 'antlr4';
 import GoScriptVisitor from './GoScriptVisitor.js';
 
-const serializedATN = [4,1,28,86,2,0,7,0,2,1,7,1,2,2,7,2,2,3,7,3,2,4,7,4,
-2,5,7,5,1,0,1,0,1,0,3,0,16,8,0,1,0,1,0,1,0,1,1,1,1,4,1,23,8,1,11,1,12,1,
-24,1,2,1,2,1,2,1,2,1,2,1,2,1,2,3,2,34,8,2,1,3,1,3,1,3,1,3,1,3,1,3,1,3,1,
-3,1,3,3,3,45,8,3,1,4,1,4,1,4,1,4,3,4,51,8,4,1,4,1,4,1,4,1,4,1,4,1,4,1,4,
-3,4,60,8,4,1,4,1,4,3,4,64,8,4,1,5,1,5,1,5,1,5,1,5,1,5,1,5,3,5,73,8,5,1,5,
-1,5,1,5,1,5,1,5,1,5,5,5,81,8,5,10,5,12,5,84,9,5,1,5,0,1,10,6,0,2,4,6,8,10,
-0,3,2,0,4,4,6,6,1,0,19,20,1,0,21,22,91,0,12,1,0,0,0,2,22,1,0,0,0,4,33,1,
-0,0,0,6,44,1,0,0,0,8,63,1,0,0,0,10,72,1,0,0,0,12,13,5,2,0,0,13,15,5,14,0,
-0,14,16,3,2,1,0,15,14,1,0,0,0,15,16,1,0,0,0,16,17,1,0,0,0,17,18,5,15,0,0,
-18,19,5,17,0,0,19,1,1,0,0,0,20,23,3,4,2,0,21,23,3,8,4,0,22,20,1,0,0,0,22,
-21,1,0,0,0,23,24,1,0,0,0,24,22,1,0,0,0,24,25,1,0,0,0,25,3,1,0,0,0,26,27,
-5,7,0,0,27,28,7,0,0,0,28,34,3,6,3,0,29,30,5,7,0,0,30,31,7,0,0,0,31,32,5,
-9,0,0,32,34,5,17,0,0,33,26,1,0,0,0,33,29,1,0,0,0,34,5,1,0,0,0,35,36,5,9,
-0,0,36,37,5,18,0,0,37,38,3,10,5,0,38,39,5,17,0,0,39,45,1,0,0,0,40,41,5,9,
-0,0,41,42,5,18,0,0,42,43,5,16,0,0,43,45,5,17,0,0,44,35,1,0,0,0,44,40,1,0,
-0,0,45,7,1,0,0,0,46,47,5,8,0,0,47,48,5,26,0,0,48,50,3,10,5,0,49,51,5,28,
-0,0,50,49,1,0,0,0,50,51,1,0,0,0,51,52,1,0,0,0,52,53,5,27,0,0,53,54,5,17,
-0,0,54,64,1,0,0,0,55,56,5,8,0,0,56,57,5,26,0,0,57,59,5,16,0,0,58,60,5,28,
-0,0,59,58,1,0,0,0,59,60,1,0,0,0,60,61,1,0,0,0,61,62,5,27,0,0,62,64,5,17,
-0,0,63,46,1,0,0,0,63,55,1,0,0,0,64,9,1,0,0,0,65,66,6,5,-1,0,66,73,5,10,0,
-0,67,73,5,9,0,0,68,69,5,23,0,0,69,70,3,10,5,0,70,71,5,24,0,0,71,73,1,0,0,
-0,72,65,1,0,0,0,72,67,1,0,0,0,72,68,1,0,0,0,73,82,1,0,0,0,74,75,10,5,0,0,
-75,76,7,1,0,0,76,81,3,10,5,6,77,78,10,4,0,0,78,79,7,2,0,0,79,81,3,10,5,5,
-80,74,1,0,0,0,80,77,1,0,0,0,81,84,1,0,0,0,82,80,1,0,0,0,82,83,1,0,0,0,83,
-11,1,0,0,0,84,82,1,0,0,0,11,15,22,24,33,44,50,59,63,72,80,82];
+const serializedATN = [4,1,31,117,2,0,7,0,2,1,7,1,2,2,7,2,2,3,7,3,2,4,7,
+4,2,5,7,5,2,6,7,6,2,7,7,7,1,0,1,0,1,0,3,0,20,8,0,1,0,1,0,1,0,1,1,1,1,1,1,
+4,1,28,8,1,11,1,12,1,29,1,2,1,2,1,2,1,2,1,2,1,2,1,2,3,2,39,8,2,1,3,1,3,1,
+3,1,3,1,3,1,3,1,3,1,3,1,3,3,3,50,8,3,1,4,1,4,1,4,1,4,3,4,56,8,4,1,4,1,4,
+1,4,1,4,1,4,1,4,1,4,3,4,65,8,4,1,4,1,4,3,4,69,8,4,1,5,1,5,1,5,1,5,1,5,1,
+5,1,5,3,5,78,8,5,1,5,1,5,1,5,1,5,1,5,1,5,5,5,86,8,5,10,5,12,5,89,9,5,1,6,
+1,6,1,6,1,6,1,6,1,6,3,6,97,8,6,1,6,1,6,1,6,1,7,1,7,1,7,1,7,1,7,1,7,1,7,1,
+7,1,7,1,7,1,7,1,7,1,7,3,7,115,8,7,1,7,0,1,10,8,0,2,4,6,8,10,12,14,0,3,2,
+0,4,4,6,6,1,0,20,21,1,0,22,23,124,0,16,1,0,0,0,2,27,1,0,0,0,4,38,1,0,0,0,
+6,49,1,0,0,0,8,68,1,0,0,0,10,77,1,0,0,0,12,90,1,0,0,0,14,114,1,0,0,0,16,
+17,5,2,0,0,17,19,5,15,0,0,18,20,3,2,1,0,19,18,1,0,0,0,19,20,1,0,0,0,20,21,
+1,0,0,0,21,22,5,16,0,0,22,23,5,18,0,0,23,1,1,0,0,0,24,28,3,4,2,0,25,28,3,
+8,4,0,26,28,3,12,6,0,27,24,1,0,0,0,27,25,1,0,0,0,27,26,1,0,0,0,28,29,1,0,
+0,0,29,27,1,0,0,0,29,30,1,0,0,0,30,3,1,0,0,0,31,32,5,7,0,0,32,33,7,0,0,0,
+33,39,3,6,3,0,34,35,5,7,0,0,35,36,7,0,0,0,36,37,5,10,0,0,37,39,5,18,0,0,
+38,31,1,0,0,0,38,34,1,0,0,0,39,5,1,0,0,0,40,41,5,10,0,0,41,42,5,19,0,0,42,
+43,3,10,5,0,43,44,5,18,0,0,44,50,1,0,0,0,45,46,5,10,0,0,46,47,5,19,0,0,47,
+48,5,17,0,0,48,50,5,18,0,0,49,40,1,0,0,0,49,45,1,0,0,0,50,7,1,0,0,0,51,52,
+5,8,0,0,52,53,5,27,0,0,53,55,3,10,5,0,54,56,5,31,0,0,55,54,1,0,0,0,55,56,
+1,0,0,0,56,57,1,0,0,0,57,58,5,28,0,0,58,59,5,18,0,0,59,69,1,0,0,0,60,61,
+5,8,0,0,61,62,5,27,0,0,62,64,5,17,0,0,63,65,5,31,0,0,64,63,1,0,0,0,64,65,
+1,0,0,0,65,66,1,0,0,0,66,67,5,28,0,0,67,69,5,18,0,0,68,51,1,0,0,0,68,60,
+1,0,0,0,69,9,1,0,0,0,70,71,6,5,-1,0,71,78,5,11,0,0,72,78,5,10,0,0,73,74,
+5,24,0,0,74,75,3,10,5,0,75,76,5,25,0,0,76,78,1,0,0,0,77,70,1,0,0,0,77,72,
+1,0,0,0,77,73,1,0,0,0,78,87,1,0,0,0,79,80,10,5,0,0,80,81,7,1,0,0,81,86,3,
+10,5,6,82,83,10,4,0,0,83,84,7,2,0,0,84,86,3,10,5,5,85,79,1,0,0,0,85,82,1,
+0,0,0,86,89,1,0,0,0,87,85,1,0,0,0,87,88,1,0,0,0,88,11,1,0,0,0,89,87,1,0,
+0,0,90,91,5,9,0,0,91,92,5,24,0,0,92,93,3,14,7,0,93,94,5,25,0,0,94,96,5,15,
+0,0,95,97,3,2,1,0,96,95,1,0,0,0,96,97,1,0,0,0,97,98,1,0,0,0,98,99,5,16,0,
+0,99,100,5,18,0,0,100,13,1,0,0,0,101,102,3,10,5,0,102,103,5,29,0,0,103,104,
+3,10,5,0,104,115,1,0,0,0,105,106,3,10,5,0,106,107,5,30,0,0,107,108,3,10,
+5,0,108,115,1,0,0,0,109,110,3,10,5,0,110,111,5,19,0,0,111,112,5,19,0,0,112,
+113,3,10,5,0,113,115,1,0,0,0,114,101,1,0,0,0,114,105,1,0,0,0,114,109,1,0,
+0,0,115,15,1,0,0,0,13,19,27,29,38,49,55,64,68,77,85,87,96,114];
 
 
 const atn = new antlr4.atn.ATNDeserializer().deserialize(serializedATN);
@@ -39,19 +48,20 @@ const sharedContextCache = new antlr4.atn.PredictionContextCache();
 export default class GoScriptParser extends antlr4.Parser {
 
     static grammarFileName = "GoScript.g4";
-    static literalNames = [ null, null, "'go'", "'dotnum'", "'number'", 
-                            "'letter'", "'letterstr'", "'says'", "'displays'", 
-                            null, null, null, null, null, "'{'", "'}'", 
-                            null, "';'", "'='", "'*'", "'/'", "'+'", "'-'", 
-                            "'('", "')'", "'\"'", "'['", "']'" ];
+    static literalNames = [ null, null, null, "'dotnum'", null, "'letter'", 
+                            null, null, null, null, null, null, null, null, 
+                            null, "'{'", "'}'", null, "';'", "'='", "'*'", 
+                            "'/'", "'+'", "'-'", "'('", "')'", "'\"'", "'['", 
+                            "']'", "'>'", "'<'" ];
     static symbolicNames = [ null, "WS", "GO", "DOTNUM", "NUMBER", "LETTER", 
-                             "LETTERSTR", "SAYS", "DISPLAYS", "ID", "INT", 
-                             "NO_ID", "CHARAS", "DISPLAYEDTEXT", "CBRACEO", 
-                             "CBRACEC", "TTX", "SCOLON", "EQU", "STAR", 
-                             "DIAGO", "SUM", "RES", "PO", "PC", "DQUOTE", 
-                             "BRACEO", "BRACEC", "NEWLINE" ];
+                             "LETTERSTR", "SAYS", "DISPLAYS", "IF", "ID", 
+                             "INT", "NO_ID", "CHARAS", "DISPLAYEDTEXT", 
+                             "CBRACEO", "CBRACEC", "TTX", "SCOLON", "EQU", 
+                             "STAR", "DIAGO", "SUM", "RES", "PO", "PC", 
+                             "DQUOTE", "BRACEO", "BRACEC", "GREATERTHAN", 
+                             "LESSTHAN", "NEWLINE" ];
     static ruleNames = [ "big_bang", "content", "says", "assignation", "displays", 
-                         "expre" ];
+                         "expre", "if", "condition" ];
 
     constructor(input) {
         super(input);
@@ -90,21 +100,21 @@ export default class GoScriptParser extends antlr4.Parser {
 	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
-	        this.state = 12;
+	        this.state = 16;
 	        this.match(GoScriptParser.GO);
-	        this.state = 13;
+	        this.state = 17;
 	        this.match(GoScriptParser.CBRACEO);
-	        this.state = 15;
+	        this.state = 19;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===7 || _la===8) {
-	            this.state = 14;
+	        if((((_la) & ~0x1f) === 0 && ((1 << _la) & 896) !== 0)) {
+	            this.state = 18;
 	            this.content();
 	        }
 
-	        this.state = 17;
+	        this.state = 21;
 	        this.match(GoScriptParser.CBRACEC);
-	        this.state = 18;
+	        this.state = 22;
 	        this.match(GoScriptParser.SCOLON);
 	    } catch (re) {
 	    	if(re instanceof antlr4.error.RecognitionException) {
@@ -129,28 +139,32 @@ export default class GoScriptParser extends antlr4.Parser {
 	    try {
 	        localctx = new GoContentContext(this, localctx);
 	        this.enterOuterAlt(localctx, 1);
-	        this.state = 22; 
+	        this.state = 27; 
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
 	        do {
-	            this.state = 22;
+	            this.state = 27;
 	            this._errHandler.sync(this);
 	            switch(this._input.LA(1)) {
 	            case 7:
-	                this.state = 20;
+	                this.state = 24;
 	                this.says();
 	                break;
 	            case 8:
-	                this.state = 21;
+	                this.state = 25;
 	                this.displays();
+	                break;
+	            case 9:
+	                this.state = 26;
+	                this.if_();
 	                break;
 	            default:
 	                throw new antlr4.error.NoViableAltException(this);
 	            }
-	            this.state = 24; 
+	            this.state = 29; 
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	        } while(_la===7 || _la===8);
+	        } while((((_la) & ~0x1f) === 0 && ((1 << _la) & 896) !== 0));
 	    } catch (re) {
 	    	if(re instanceof antlr4.error.RecognitionException) {
 		        localctx.exception = re;
@@ -172,16 +186,16 @@ export default class GoScriptParser extends antlr4.Parser {
 	    this.enterRule(localctx, 4, GoScriptParser.RULE_says);
 	    var _la = 0;
 	    try {
-	        this.state = 33;
+	        this.state = 38;
 	        this._errHandler.sync(this);
 	        var la_ = this._interp.adaptivePredict(this._input,3,this._ctx);
 	        switch(la_) {
 	        case 1:
 	            localctx = new ExpreDeclarationContext(this, localctx);
 	            this.enterOuterAlt(localctx, 1);
-	            this.state = 26;
+	            this.state = 31;
 	            this.match(GoScriptParser.SAYS);
-	            this.state = 27;
+	            this.state = 32;
 	            localctx.datatype = this._input.LT(1);
 	            _la = this._input.LA(1);
 	            if(!(_la===4 || _la===6)) {
@@ -191,16 +205,16 @@ export default class GoScriptParser extends antlr4.Parser {
 	            	this._errHandler.reportMatch(this);
 	                this.consume();
 	            }
-	            this.state = 28;
+	            this.state = 33;
 	            this.assignation();
 	            break;
 
 	        case 2:
 	            localctx = new DefaultDeclarationContext(this, localctx);
 	            this.enterOuterAlt(localctx, 2);
-	            this.state = 29;
+	            this.state = 34;
 	            this.match(GoScriptParser.SAYS);
-	            this.state = 30;
+	            this.state = 35;
 	            localctx.datatype = this._input.LT(1);
 	            _la = this._input.LA(1);
 	            if(!(_la===4 || _la===6)) {
@@ -210,9 +224,9 @@ export default class GoScriptParser extends antlr4.Parser {
 	            	this._errHandler.reportMatch(this);
 	                this.consume();
 	            }
-	            this.state = 31;
+	            this.state = 36;
 	            this.match(GoScriptParser.ID);
-	            this.state = 32;
+	            this.state = 37;
 	            this.match(GoScriptParser.SCOLON);
 	            break;
 
@@ -237,33 +251,33 @@ export default class GoScriptParser extends antlr4.Parser {
 	    let localctx = new AssignationContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 6, GoScriptParser.RULE_assignation);
 	    try {
-	        this.state = 44;
+	        this.state = 49;
 	        this._errHandler.sync(this);
 	        var la_ = this._interp.adaptivePredict(this._input,4,this._ctx);
 	        switch(la_) {
 	        case 1:
 	            localctx = new ExpreAssignContext(this, localctx);
 	            this.enterOuterAlt(localctx, 1);
-	            this.state = 35;
+	            this.state = 40;
 	            this.match(GoScriptParser.ID);
-	            this.state = 36;
+	            this.state = 41;
 	            this.match(GoScriptParser.EQU);
-	            this.state = 37;
+	            this.state = 42;
 	            this.expre(0);
-	            this.state = 38;
+	            this.state = 43;
 	            this.match(GoScriptParser.SCOLON);
 	            break;
 
 	        case 2:
 	            localctx = new CharacterAssginContext(this, localctx);
 	            this.enterOuterAlt(localctx, 2);
-	            this.state = 40;
+	            this.state = 45;
 	            this.match(GoScriptParser.ID);
-	            this.state = 41;
+	            this.state = 46;
 	            this.match(GoScriptParser.EQU);
-	            this.state = 42;
+	            this.state = 47;
 	            this.match(GoScriptParser.TTX);
-	            this.state = 43;
+	            this.state = 48;
 	            this.match(GoScriptParser.SCOLON);
 	            break;
 
@@ -289,53 +303,53 @@ export default class GoScriptParser extends antlr4.Parser {
 	    this.enterRule(localctx, 8, GoScriptParser.RULE_displays);
 	    var _la = 0;
 	    try {
-	        this.state = 63;
+	        this.state = 68;
 	        this._errHandler.sync(this);
 	        var la_ = this._interp.adaptivePredict(this._input,7,this._ctx);
 	        switch(la_) {
 	        case 1:
 	            localctx = new DisplaysExpressionContext(this, localctx);
 	            this.enterOuterAlt(localctx, 1);
-	            this.state = 46;
+	            this.state = 51;
 	            this.match(GoScriptParser.DISPLAYS);
-	            this.state = 47;
+	            this.state = 52;
 	            this.match(GoScriptParser.BRACEO);
-	            this.state = 48;
+	            this.state = 53;
 	            this.expre(0);
-	            this.state = 50;
+	            this.state = 55;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            if(_la===28) {
-	                this.state = 49;
+	            if(_la===31) {
+	                this.state = 54;
 	                this.match(GoScriptParser.NEWLINE);
 	            }
 
-	            this.state = 52;
+	            this.state = 57;
 	            this.match(GoScriptParser.BRACEC);
-	            this.state = 53;
+	            this.state = 58;
 	            this.match(GoScriptParser.SCOLON);
 	            break;
 
 	        case 2:
 	            localctx = new DisplaysTextContext(this, localctx);
 	            this.enterOuterAlt(localctx, 2);
-	            this.state = 55;
+	            this.state = 60;
 	            this.match(GoScriptParser.DISPLAYS);
-	            this.state = 56;
+	            this.state = 61;
 	            this.match(GoScriptParser.BRACEO);
-	            this.state = 57;
+	            this.state = 62;
 	            this.match(GoScriptParser.TTX);
-	            this.state = 59;
+	            this.state = 64;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            if(_la===28) {
-	                this.state = 58;
+	            if(_la===31) {
+	                this.state = 63;
 	                this.match(GoScriptParser.NEWLINE);
 	            }
 
-	            this.state = 61;
+	            this.state = 66;
 	            this.match(GoScriptParser.BRACEC);
-	            this.state = 62;
+	            this.state = 67;
 	            this.match(GoScriptParser.SCOLON);
 	            break;
 
@@ -368,40 +382,40 @@ export default class GoScriptParser extends antlr4.Parser {
 	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
-	        this.state = 72;
+	        this.state = 77;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case 10:
+	        case 11:
 	            localctx = new IntContext(this, localctx);
 	            this._ctx = localctx;
 	            _prevctx = localctx;
 
-	            this.state = 66;
+	            this.state = 71;
 	            this.match(GoScriptParser.INT);
 	            break;
-	        case 9:
+	        case 10:
 	            localctx = new IdContext(this, localctx);
 	            this._ctx = localctx;
 	            _prevctx = localctx;
-	            this.state = 67;
+	            this.state = 72;
 	            this.match(GoScriptParser.ID);
 	            break;
-	        case 23:
+	        case 24:
 	            localctx = new ParenthesisContext(this, localctx);
 	            this._ctx = localctx;
 	            _prevctx = localctx;
-	            this.state = 68;
+	            this.state = 73;
 	            this.match(GoScriptParser.PO);
-	            this.state = 69;
+	            this.state = 74;
 	            this.expre(0);
-	            this.state = 70;
+	            this.state = 75;
 	            this.match(GoScriptParser.PC);
 	            break;
 	        default:
 	            throw new antlr4.error.NoViableAltException(this);
 	        }
 	        this._ctx.stop = this._input.LT(-1);
-	        this.state = 82;
+	        this.state = 87;
 	        this._errHandler.sync(this);
 	        var _alt = this._interp.adaptivePredict(this._input,10,this._ctx)
 	        while(_alt!=2 && _alt!=antlr4.atn.ATN.INVALID_ALT_NUMBER) {
@@ -410,55 +424,55 @@ export default class GoScriptParser extends antlr4.Parser {
 	                    this.triggerExitRuleEvent();
 	                }
 	                _prevctx = localctx;
-	                this.state = 80;
+	                this.state = 85;
 	                this._errHandler.sync(this);
 	                var la_ = this._interp.adaptivePredict(this._input,9,this._ctx);
 	                switch(la_) {
 	                case 1:
 	                    localctx = new MultDivContext(this, new ExpreContext(this, _parentctx, _parentState));
 	                    this.pushNewRecursionContext(localctx, _startState, GoScriptParser.RULE_expre);
-	                    this.state = 74;
+	                    this.state = 79;
 	                    if (!( this.precpred(this._ctx, 5))) {
 	                        throw new antlr4.error.FailedPredicateException(this, "this.precpred(this._ctx, 5)");
 	                    }
-	                    this.state = 75;
+	                    this.state = 80;
 	                    localctx.operation = this._input.LT(1);
 	                    _la = this._input.LA(1);
-	                    if(!(_la===19 || _la===20)) {
+	                    if(!(_la===20 || _la===21)) {
 	                        localctx.operation = this._errHandler.recoverInline(this);
 	                    }
 	                    else {
 	                    	this._errHandler.reportMatch(this);
 	                        this.consume();
 	                    }
-	                    this.state = 76;
+	                    this.state = 81;
 	                    this.expre(6);
 	                    break;
 
 	                case 2:
 	                    localctx = new SumResContext(this, new ExpreContext(this, _parentctx, _parentState));
 	                    this.pushNewRecursionContext(localctx, _startState, GoScriptParser.RULE_expre);
-	                    this.state = 77;
+	                    this.state = 82;
 	                    if (!( this.precpred(this._ctx, 4))) {
 	                        throw new antlr4.error.FailedPredicateException(this, "this.precpred(this._ctx, 4)");
 	                    }
-	                    this.state = 78;
+	                    this.state = 83;
 	                    localctx.operation = this._input.LT(1);
 	                    _la = this._input.LA(1);
-	                    if(!(_la===21 || _la===22)) {
+	                    if(!(_la===22 || _la===23)) {
 	                        localctx.operation = this._errHandler.recoverInline(this);
 	                    }
 	                    else {
 	                    	this._errHandler.reportMatch(this);
 	                        this.consume();
 	                    }
-	                    this.state = 79;
+	                    this.state = 84;
 	                    this.expre(5);
 	                    break;
 
 	                } 
 	            }
-	            this.state = 84;
+	            this.state = 89;
 	            this._errHandler.sync(this);
 	            _alt = this._interp.adaptivePredict(this._input,10,this._ctx);
 	        }
@@ -478,6 +492,111 @@ export default class GoScriptParser extends antlr4.Parser {
 	}
 
 
+
+	if_() {
+	    let localctx = new IfContext(this, this._ctx, this.state);
+	    this.enterRule(localctx, 12, GoScriptParser.RULE_if);
+	    var _la = 0;
+	    try {
+	        localctx = new ConditionalSentenceIfContext(this, localctx);
+	        this.enterOuterAlt(localctx, 1);
+	        this.state = 90;
+	        this.match(GoScriptParser.IF);
+	        this.state = 91;
+	        this.match(GoScriptParser.PO);
+	        this.state = 92;
+	        this.condition();
+	        this.state = 93;
+	        this.match(GoScriptParser.PC);
+	        this.state = 94;
+	        this.match(GoScriptParser.CBRACEO);
+	        this.state = 96;
+	        this._errHandler.sync(this);
+	        _la = this._input.LA(1);
+	        if((((_la) & ~0x1f) === 0 && ((1 << _la) & 896) !== 0)) {
+	            this.state = 95;
+	            this.content();
+	        }
+
+	        this.state = 98;
+	        this.match(GoScriptParser.CBRACEC);
+	        this.state = 99;
+	        this.match(GoScriptParser.SCOLON);
+	    } catch (re) {
+	    	if(re instanceof antlr4.error.RecognitionException) {
+		        localctx.exception = re;
+		        this._errHandler.reportError(this, re);
+		        this._errHandler.recover(this, re);
+		    } else {
+		    	throw re;
+		    }
+	    } finally {
+	        this.exitRule();
+	    }
+	    return localctx;
+	}
+
+
+
+	condition() {
+	    let localctx = new ConditionContext(this, this._ctx, this.state);
+	    this.enterRule(localctx, 14, GoScriptParser.RULE_condition);
+	    try {
+	        this.state = 114;
+	        this._errHandler.sync(this);
+	        var la_ = this._interp.adaptivePredict(this._input,12,this._ctx);
+	        switch(la_) {
+	        case 1:
+	            localctx = new ConditionMoreThanContext(this, localctx);
+	            this.enterOuterAlt(localctx, 1);
+	            this.state = 101;
+	            this.expre(0);
+	            this.state = 102;
+	            this.match(GoScriptParser.GREATERTHAN);
+	            this.state = 103;
+	            this.expre(0);
+	            break;
+
+	        case 2:
+	            localctx = new ConditionLessThanContext(this, localctx);
+	            this.enterOuterAlt(localctx, 2);
+	            this.state = 105;
+	            this.expre(0);
+	            this.state = 106;
+	            this.match(GoScriptParser.LESSTHAN);
+	            this.state = 107;
+	            this.expre(0);
+	            break;
+
+	        case 3:
+	            localctx = new ConditionIsEqualContext(this, localctx);
+	            this.enterOuterAlt(localctx, 3);
+	            this.state = 109;
+	            this.expre(0);
+	            this.state = 110;
+	            this.match(GoScriptParser.EQU);
+	            this.state = 111;
+	            this.match(GoScriptParser.EQU);
+	            this.state = 112;
+	            this.expre(0);
+	            break;
+
+	        }
+	    } catch (re) {
+	    	if(re instanceof antlr4.error.RecognitionException) {
+		        localctx.exception = re;
+		        this._errHandler.reportError(this, re);
+		        this._errHandler.recover(this, re);
+		    } else {
+		    	throw re;
+		    }
+	    } finally {
+	        this.exitRule();
+	    }
+	    return localctx;
+	}
+
+
 }
 
 GoScriptParser.EOF = antlr4.Token.EOF;
@@ -489,26 +608,29 @@ GoScriptParser.LETTER = 5;
 GoScriptParser.LETTERSTR = 6;
 GoScriptParser.SAYS = 7;
 GoScriptParser.DISPLAYS = 8;
-GoScriptParser.ID = 9;
-GoScriptParser.INT = 10;
-GoScriptParser.NO_ID = 11;
-GoScriptParser.CHARAS = 12;
-GoScriptParser.DISPLAYEDTEXT = 13;
-GoScriptParser.CBRACEO = 14;
-GoScriptParser.CBRACEC = 15;
-GoScriptParser.TTX = 16;
-GoScriptParser.SCOLON = 17;
-GoScriptParser.EQU = 18;
-GoScriptParser.STAR = 19;
-GoScriptParser.DIAGO = 20;
-GoScriptParser.SUM = 21;
-GoScriptParser.RES = 22;
-GoScriptParser.PO = 23;
-GoScriptParser.PC = 24;
-GoScriptParser.DQUOTE = 25;
-GoScriptParser.BRACEO = 26;
-GoScriptParser.BRACEC = 27;
-GoScriptParser.NEWLINE = 28;
+GoScriptParser.IF = 9;
+GoScriptParser.ID = 10;
+GoScriptParser.INT = 11;
+GoScriptParser.NO_ID = 12;
+GoScriptParser.CHARAS = 13;
+GoScriptParser.DISPLAYEDTEXT = 14;
+GoScriptParser.CBRACEO = 15;
+GoScriptParser.CBRACEC = 16;
+GoScriptParser.TTX = 17;
+GoScriptParser.SCOLON = 18;
+GoScriptParser.EQU = 19;
+GoScriptParser.STAR = 20;
+GoScriptParser.DIAGO = 21;
+GoScriptParser.SUM = 22;
+GoScriptParser.RES = 23;
+GoScriptParser.PO = 24;
+GoScriptParser.PC = 25;
+GoScriptParser.DQUOTE = 26;
+GoScriptParser.BRACEO = 27;
+GoScriptParser.BRACEC = 28;
+GoScriptParser.GREATERTHAN = 29;
+GoScriptParser.LESSTHAN = 30;
+GoScriptParser.NEWLINE = 31;
 
 GoScriptParser.RULE_big_bang = 0;
 GoScriptParser.RULE_content = 1;
@@ -516,6 +638,8 @@ GoScriptParser.RULE_says = 2;
 GoScriptParser.RULE_assignation = 3;
 GoScriptParser.RULE_displays = 4;
 GoScriptParser.RULE_expre = 5;
+GoScriptParser.RULE_if = 6;
+GoScriptParser.RULE_condition = 7;
 
 class Big_bangContext extends antlr4.ParserRuleContext {
 
@@ -613,6 +737,17 @@ class GoContentContext extends ContentContext {
 	        return this.getTypedRuleContexts(DisplaysContext);
 	    } else {
 	        return this.getTypedRuleContext(DisplaysContext,i);
+	    }
+	};
+
+	if_ = function(i) {
+	    if(i===undefined) {
+	        i = null;
+	    }
+	    if(i===null) {
+	        return this.getTypedRuleContexts(IfContext);
+	    } else {
+	        return this.getTypedRuleContext(IfContext,i);
 	    }
 	};
 
@@ -1119,6 +1254,217 @@ class MultDivContext extends ExpreContext {
 
 GoScriptParser.MultDivContext = MultDivContext;
 
+class IfContext extends antlr4.ParserRuleContext {
+
+    constructor(parser, parent, invokingState) {
+        if(parent===undefined) {
+            parent = null;
+        }
+        if(invokingState===undefined || invokingState===null) {
+            invokingState = -1;
+        }
+        super(parent, invokingState);
+        this.parser = parser;
+        this.ruleIndex = GoScriptParser.RULE_if;
+    }
+
+
+	 
+		copyFrom(ctx) {
+			super.copyFrom(ctx);
+		}
+
+}
+
+
+class ConditionalSentenceIfContext extends IfContext {
+
+    constructor(parser, ctx) {
+        super(parser);
+        super.copyFrom(ctx);
+    }
+
+	IF() {
+	    return this.getToken(GoScriptParser.IF, 0);
+	};
+
+	PO() {
+	    return this.getToken(GoScriptParser.PO, 0);
+	};
+
+	condition() {
+	    return this.getTypedRuleContext(ConditionContext,0);
+	};
+
+	PC() {
+	    return this.getToken(GoScriptParser.PC, 0);
+	};
+
+	CBRACEO() {
+	    return this.getToken(GoScriptParser.CBRACEO, 0);
+	};
+
+	CBRACEC() {
+	    return this.getToken(GoScriptParser.CBRACEC, 0);
+	};
+
+	SCOLON() {
+	    return this.getToken(GoScriptParser.SCOLON, 0);
+	};
+
+	content() {
+	    return this.getTypedRuleContext(ContentContext,0);
+	};
+
+	accept(visitor) {
+	    if ( visitor instanceof GoScriptVisitor ) {
+	        return visitor.visitConditionalSentenceIf(this);
+	    } else {
+	        return visitor.visitChildren(this);
+	    }
+	}
+
+
+}
+
+GoScriptParser.ConditionalSentenceIfContext = ConditionalSentenceIfContext;
+
+class ConditionContext extends antlr4.ParserRuleContext {
+
+    constructor(parser, parent, invokingState) {
+        if(parent===undefined) {
+            parent = null;
+        }
+        if(invokingState===undefined || invokingState===null) {
+            invokingState = -1;
+        }
+        super(parent, invokingState);
+        this.parser = parser;
+        this.ruleIndex = GoScriptParser.RULE_condition;
+    }
+
+
+	 
+		copyFrom(ctx) {
+			super.copyFrom(ctx);
+		}
+
+}
+
+
+class ConditionIsEqualContext extends ConditionContext {
+
+    constructor(parser, ctx) {
+        super(parser);
+        super.copyFrom(ctx);
+    }
+
+	expre = function(i) {
+	    if(i===undefined) {
+	        i = null;
+	    }
+	    if(i===null) {
+	        return this.getTypedRuleContexts(ExpreContext);
+	    } else {
+	        return this.getTypedRuleContext(ExpreContext,i);
+	    }
+	};
+
+	EQU = function(i) {
+		if(i===undefined) {
+			i = null;
+		}
+	    if(i===null) {
+	        return this.getTokens(GoScriptParser.EQU);
+	    } else {
+	        return this.getToken(GoScriptParser.EQU, i);
+	    }
+	};
+
+
+	accept(visitor) {
+	    if ( visitor instanceof GoScriptVisitor ) {
+	        return visitor.visitConditionIsEqual(this);
+	    } else {
+	        return visitor.visitChildren(this);
+	    }
+	}
+
+
+}
+
+GoScriptParser.ConditionIsEqualContext = ConditionIsEqualContext;
+
+class ConditionLessThanContext extends ConditionContext {
+
+    constructor(parser, ctx) {
+        super(parser);
+        super.copyFrom(ctx);
+    }
+
+	expre = function(i) {
+	    if(i===undefined) {
+	        i = null;
+	    }
+	    if(i===null) {
+	        return this.getTypedRuleContexts(ExpreContext);
+	    } else {
+	        return this.getTypedRuleContext(ExpreContext,i);
+	    }
+	};
+
+	LESSTHAN() {
+	    return this.getToken(GoScriptParser.LESSTHAN, 0);
+	};
+
+	accept(visitor) {
+	    if ( visitor instanceof GoScriptVisitor ) {
+	        return visitor.visitConditionLessThan(this);
+	    } else {
+	        return visitor.visitChildren(this);
+	    }
+	}
+
+
+}
+
+GoScriptParser.ConditionLessThanContext = ConditionLessThanContext;
+
+class ConditionMoreThanContext extends ConditionContext {
+
+    constructor(parser, ctx) {
+        super(parser);
+        super.copyFrom(ctx);
+    }
+
+	expre = function(i) {
+	    if(i===undefined) {
+	        i = null;
+	    }
+	    if(i===null) {
+	        return this.getTypedRuleContexts(ExpreContext);
+	    } else {
+	        return this.getTypedRuleContext(ExpreContext,i);
+	    }
+	};
+
+	GREATERTHAN() {
+	    return this.getToken(GoScriptParser.GREATERTHAN, 0);
+	};
+
+	accept(visitor) {
+	    if ( visitor instanceof GoScriptVisitor ) {
+	        return visitor.visitConditionMoreThan(this);
+	    } else {
+	        return visitor.visitChildren(this);
+	    }
+	}
+
+
+}
+
+GoScriptParser.ConditionMoreThanContext = ConditionMoreThanContext;
+
 
 GoScriptParser.Big_bangContext = Big_bangContext; 
 GoScriptParser.ContentContext = ContentContext; 
@@ -1126,3 +1472,5 @@ GoScriptParser.SaysContext = SaysContext;
 GoScriptParser.AssignationContext = AssignationContext; 
 GoScriptParser.DisplaysContext = DisplaysContext; 
 GoScriptParser.ExpreContext = ExpreContext; 
+GoScriptParser.IfContext = IfContext; 
+GoScriptParser.ConditionContext = ConditionContext; 

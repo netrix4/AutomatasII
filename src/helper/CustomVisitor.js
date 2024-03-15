@@ -196,6 +196,49 @@ export default class CustomVisitor extends GoScriptVisitor {
 
 	  return this.visitChildren(ctx);
 	}
+
+  // Visit a parse tree produced by GoScriptParser#ConditionalSentenceIf.
+	visitConditionalSentenceIf(ctx) {
+    // console.log('Esto es una prueba del if');
+
+    if (this.visit(ctx.condition())) {
+      this.visit(ctx.content());
+    } else {
+      return 0;
+    }
+	}
+
+	// Visit a parse tree produced by GoScriptParser#ConditionMoreThan.
+	visitConditionMoreThan(ctx) {
+    // console.log('pruebaMayor que');
+
+    const leftValue = this.visit(ctx.expre(0));
+    const rightValue = this.visit(ctx.expre(1));
+
+    return leftValue > rightValue;
+	}
+  
+  
+	// Visit a parse tree produced by GoScriptParser#ConditionLessThan.
+	visitConditionLessThan(ctx) {
+    // console.log('pruebaMenor que');
+
+    const leftValue = this.visit(ctx.expre(0));
+    const rightValue = this.visit(ctx.expre(1));
+
+    return leftValue < rightValue;
+	}
+
+
+	// Visit a parse tree produced by GoScriptParser#ConditionIsEqual.
+	visitConditionIsEqual(ctx) {
+    // console.log('pruebaMayor que');
+
+    const leftValue = this.visit(ctx.expre(0));
+    const rightValue = this.visit(ctx.expre(1));
+
+    return leftValue === rightValue;
+	}
   
   // Visit a parse tree produced by GoScriptParser#Parenthesis.
   visitParenthesis(ctx) {
