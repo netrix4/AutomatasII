@@ -41,8 +41,66 @@ export default class CustomVisitor extends GoScriptVisitor {
     return this.visitChildren(ctx);
   }
   
+
+  // Visit a parse tree produced by GoScriptParser#ExpreDeclaration.
+	visitExpreDeclaration(ctx) {
+    const assign = ctx.assignation().getText();
+
+    if (ctx.datatype.type === GoScriptLexer.NUMBER) {
+
+      // console.log('ExpreDeclaration con tipo de dato number');
+      const isANumAssign = /(\w+=[0-9]+)|(\w ?(\+|\-|\/|\*) ?\w);/gm;
+
+      if (assign.match(isANumAssign)) {
+        return this.visitExpreAssign(ctx.assignation());
+      } 
+      else {
+        this.TextToDisplay.push('No quisiste decir <says letterstr ...;>?');
+        return this.TextToDisplay;
+      }
+    } 
+    else {
+
+      // console.log('ExpreDeclaration con tipo de dato letterstr');
+      const isTextAssign = /(\w+="(.)+")|(\w ?(\+|\-|\/|\*) ?\w);/gm;
+
+      if (assign.match(isTextAssign)) {
+        return this.visitCharacterAssgin(ctx.assignation());
+      } 
+      else {
+        this.TextToDisplay.push('No quisiste decir <says number ...;>?');
+        return this.TextToDisplay;
+      }
+
+    }
+	}
+
+	// Visit a parse tree produced by GoScriptParser#DefaultDeclaration.
+	visitDefaultDeclaration(ctx) {
+    const id = ctx.ID().getText();
+    const value = (ctx.datatype.type === GoScriptLexer.NUMBER)? 0 : '' ;
+
+    if (this.Memory.has(id)) {
+      console.error('No puedes declarar dos veces una misma variable');
+    } 
+    else {
+      this.Memory.set(id, value);     // Guarda el valor en "memoria"
+      console.log('Id para guardar: '+ id + ' <- Valor: ' + this.Memory.get(id));
+    }    
+
+	  return this.visitChildren(ctx);
+	}
+
+
   // Visit a parse tree produced by GoScriptParser#ExpreDeclarationInteger.
 	visitExpreDeclarationInteger(ctx) {
+    console.log('ExpredeclarationInteger')
+    console.log(ctx.assignation()?.TTX()?.getText());
+
+	  return this.visit(ctx.assignation());
+	}
+  // Visit a parse tree produced by GoScriptParser#ExpreDeclarationString.
+	visitExpreDeclarationString(ctx) {
 	  return this.visit(ctx.assignation());
 	}
 
@@ -91,8 +149,15 @@ export default class CustomVisitor extends GoScriptVisitor {
     const id = ctx.ID().getText();
     const value = ctx.TTX().getText().slice(1,-1);
 
-    this.Memory.set(id,value);
+    if (this.Memory.has(id)) {
+      console.error('No puedes declarar dos veces una misma variable');
+    } 
+    else {
+      this.Memory.set(id, value);     // Guarda el valor en "memoria"
+      console.log('Id para guardar: '+ id + ' <- Valor: ' + this.Memory.get(id));
+    }
 	  return this.visitChildren(ctx);
+
 	}
 
   // Visit a parse tree produced by GoScriptParser#DisplaysText.

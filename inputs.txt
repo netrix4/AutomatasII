@@ -196,9 +196,17 @@ condicion: expre < expre
  expre > expre
  expre == expre
 
- go{
+go{
    displays ["Comoooooo"];
    says number a = 99;
    displays ["de nada"];
    displays [a];
+};
+
+go{
+   says number numero;
+   says letterstr otravar;
+   says number q= 123;
+   says letterstr db = "GOKUUUUU";
+   displays [numero+db+q+numero+numero+numero];
 };

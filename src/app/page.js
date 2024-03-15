@@ -5,9 +5,11 @@ import InputFormater from '../helper/InputFormater';
 import InputAnalizer from "../helper/InputAnalizer";
 
 export default function HomePage() {
+  const minimumLinesEditor = ['1\n','2\n','3\n'];
+
   const [inputUser, setInputUser] = useState(`go{\n\n};`);
   const [results, setResults] = useState('');
-  const [linesInputUser, setLinesInputUser] = useState(['1\n','2\n','3\n']);
+  const [linesInputUser, setLinesInputUser] = useState(minimumLinesEditor);
 
   const inputFormater = new InputFormater();
   const inputAnalizer = new InputAnalizer();
@@ -21,13 +23,14 @@ export default function HomePage() {
       setLinesInputUser(numberOfLines);      
     }
     else{
-      setLinesInputUser(['1\n','2\n','3\n']);
+      setLinesInputUser(minimumLinesEditor);
     }
   }
 
   function onCompileClick(event) {
     event.preventDefault();
     console.clear();
+    
     const resArray = [];
     const inputWithNoComments = inputFormater.ignoreComments(inputUser);
     const responses = analizar(inputWithNoComments);

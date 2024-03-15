@@ -5,7 +5,11 @@ export default class InputAnalizer {
     constructor() {
         this.Messages = '';
     }
-
+    /**
+     * Funcion para preanalizar
+     * @param {*} inputWithNoComments input sin comentarios
+     * @returns retorna los mensajes
+     */
     preAnalize = (inputWithNoComments) => {
         this.Messages = '';
 

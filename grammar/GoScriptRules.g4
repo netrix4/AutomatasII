@@ -19,7 +19,6 @@ CHARAS: [a-zA-Z]+;
 DISPLAYEDTEXT: [a-zA-Z0-9]+;
 CBRACEO: '{';
 CBRACEC: '}';
-// TTX: DQUOTE[a-zA-Z0-9 ]+DQUOTE;
 TTX: DQUOTE(.)+?DQUOTE;
 SCOLON: ';';
 EQU: '=';
