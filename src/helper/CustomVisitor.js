@@ -16,7 +16,6 @@ export default class CustomVisitor extends GoScriptVisitor {
     console.warn('Aqui comienzan las visitas');
     this.visitChildren(ctx);
     console.log(this.Memory);
-    // return this.Memory;
     return this.TextToDisplay;
   }
   
@@ -25,30 +24,11 @@ export default class CustomVisitor extends GoScriptVisitor {
 	  return this.visitChildren(ctx);
 	}
 
-  // Visit a parse tree produced by GoScriptParser#DeclarationInteger.
-  visitDeclarationInteger(ctx) {
-    const id = ctx.ID().getText();
-    const value = 0;
-
-    if (this.Memory.has(id)) {
-      console.error('No puedes declarar dos veces una misma variable');
-    } 
-    else {
-      this.Memory.set(id, value);     // Guarda el valor en "memoria"
-      console.log('Id para guardar: '+ id + ' <- Valor: ' + this.Memory.get(id));
-    }
-    
-    return this.visitChildren(ctx);
-  }
-  
-
   // Visit a parse tree produced by GoScriptParser#ExpreDeclaration.
 	visitExpreDeclaration(ctx) {
     const assign = ctx.assignation().getText();
 
     if (ctx.datatype.type === GoScriptLexer.NUMBER) {
-
-      // console.log('ExpreDeclaration con tipo de dato number');
       const isANumAssign = /(\w+=[0-9]+)|(\w ?(\+|\-|\/|\*) ?\w);/gm;
 
       if (assign.match(isANumAssign)) {
@@ -60,8 +40,6 @@ export default class CustomVisitor extends GoScriptVisitor {
       }
     } 
     else {
-
-      // console.log('ExpreDeclaration con tipo de dato letterstr');
       const isTextAssign = /(\w+="(.)+")|(\w ?(\+|\-|\/|\*) ?\w);/gm;
 
       if (assign.match(isTextAssign)) {
@@ -91,19 +69,6 @@ export default class CustomVisitor extends GoScriptVisitor {
 	  return this.visitChildren(ctx);
 	}
 
-
-  // Visit a parse tree produced by GoScriptParser#ExpreDeclarationInteger.
-	visitExpreDeclarationInteger(ctx) {
-    console.log('ExpredeclarationInteger')
-    console.log(ctx.assignation()?.TTX()?.getText());
-
-	  return this.visit(ctx.assignation());
-	}
-  // Visit a parse tree produced by GoScriptParser#ExpreDeclarationString.
-	visitExpreDeclarationString(ctx) {
-	  return this.visit(ctx.assignation());
-	}
-
   // Visit a parse tree produced by GoScriptParser#ExpreAssign.
   visitExpreAssign(ctx){
     const id = ctx.ID().getText();
@@ -116,6 +81,44 @@ export default class CustomVisitor extends GoScriptVisitor {
       console.log('Id para guardar: '+ id + ' <- Valor: ' + this.Memory.get(id));
     }
     return 0;
+  }
+
+  // Visit a parse tree produced by GoScriptParser#CharacterAssgin.
+  visitCharacterAssgin(ctx) {
+    const id = ctx.ID().getText();
+    const value = ctx.TTX().getText().slice(1,-1);
+
+    if (this.Memory.has(id)) {
+      console.error('No puedes declarar dos veces una misma variable');
+    } 
+    else {
+      this.Memory.set(id, value);     // Guarda el valor en "memoria"
+      console.log('Id para guardar: '+ id + ' <- Valor: ' + this.Memory.get(id));
+    }
+    return '';
+
+  }
+
+  // Visit a parse tree produced by GoScriptParser#DisplaysExpression.
+  visitDisplaysExpression(ctx) {
+    const tempRes = this.visit(ctx.expre());
+
+    if (tempRes !== null) {
+      this.TextToDisplay.push(tempRes);
+    }
+    else{
+      this.TextToDisplay.push('La variable no existe');
+    }
+
+    return this.visitChildren(ctx);
+  }
+
+  // Visit a parse tree produced by GoScriptParser#DisplaysText.
+  visitDisplaysText(ctx) {
+    const tempResp = ctx.TTX().getText().slice(1,-1);
+    this.TextToDisplay.push(tempResp);
+
+    return this.TextToDisplay;
   }
 
   // Visit a parse tree produced by GoScriptParser#MultDiv.
@@ -144,63 +147,27 @@ export default class CustomVisitor extends GoScriptVisitor {
     }
   }
 
-  // Visit a parse tree produced by GoScriptParser#CharacterAssgin.
-	visitCharacterAssgin(ctx) {
-    const id = ctx.ID().getText();
-    const value = ctx.TTX().getText().slice(1,-1);
-
-    if (this.Memory.has(id)) {
-      console.error('No puedes declarar dos veces una misma variable');
-    } 
-    else {
-      this.Memory.set(id, value);     // Guarda el valor en "memoria"
-      console.log('Id para guardar: '+ id + ' <- Valor: ' + this.Memory.get(id));
-    }
-	  return this.visitChildren(ctx);
-
-	}
-
-  // Visit a parse tree produced by GoScriptParser#DisplaysText.
-  visitDisplaysText(ctx) {
-    const tempResp = ctx.TTX().getText().slice(1,-1);
-    this.TextToDisplay.push(tempResp);
-
-    return this.TextToDisplay;
+  // Visit a parse tree produced by GoScriptParser#Int.
+  visitInt(ctx) {
+    const number = Number(ctx.getText());
+    return number;
   }
 
-  // Visit a parse tree produced by GoScriptParser#DisplaysVariable.
-	visitDisplaysVariable(ctx) {
-    console.log('visitDisplayVariable');
-
-    const variableID = ctx.ID().getText();
-
-    if (this.Memory.has(variableID)) {
-      this.TextToDisplay.push(this.Memory.get(variableID));
+  // Visit a parse tree produced by GoScriptParser#Id.
+  visitId(ctx) {
+    const id = ctx.ID().getText();
+    if (this.Memory.has(id)) {
+        return this.Memory.get(id);
     }
-    else{
-
-      //ToDo: Aqui debería usarse el objeto de InputAnalizer para saber retornar el mensaje
-      // y tal vez mover todos los anlisis de page.js para este archivo
-
-      this.TextToDisplay.push('La variable no existe'); 
-    }
-
-	  // return this.visitChildren(ctx);
-    return this.TextToDisplay;
-	}
+    return null;
+  }
   
-	// Visit a parse tree produced by GoScriptParser#DisplaysExpression.
-	visitDisplaysExpression(ctx) {
-	  const tempRes = this.visit(ctx.expre());
-    this.TextToDisplay.push(tempRes)
-
-	  return this.visitChildren(ctx);
-	}
-
+  // Visit a parse tree produced by GoScriptParser#Parenthesis.
+  visitParenthesis(ctx) {
+    return this.visit(ctx.expre());
+  }
   // Visit a parse tree produced by GoScriptParser#ConditionalSentenceIf.
 	visitConditionalSentenceIf(ctx) {
-    // console.log('Esto es una prueba del if');
-
     if (this.visit(ctx.condition())) {
       this.visit(ctx.content());
     } else {
@@ -210,54 +177,32 @@ export default class CustomVisitor extends GoScriptVisitor {
 
 	// Visit a parse tree produced by GoScriptParser#ConditionMoreThan.
 	visitConditionMoreThan(ctx) {
-    // console.log('pruebaMayor que');
-
     const leftValue = this.visit(ctx.expre(0));
     const rightValue = this.visit(ctx.expre(1));
 
     return leftValue > rightValue;
 	}
   
-  
 	// Visit a parse tree produced by GoScriptParser#ConditionLessThan.
 	visitConditionLessThan(ctx) {
-    // console.log('pruebaMenor que');
-
     const leftValue = this.visit(ctx.expre(0));
     const rightValue = this.visit(ctx.expre(1));
 
     return leftValue < rightValue;
 	}
 
-
 	// Visit a parse tree produced by GoScriptParser#ConditionIsEqual.
 	visitConditionIsEqual(ctx) {
-    // console.log('pruebaMayor que');
-
     const leftValue = this.visit(ctx.expre(0));
     const rightValue = this.visit(ctx.expre(1));
 
     return leftValue === rightValue;
 	}
-  
-  // Visit a parse tree produced by GoScriptParser#Parenthesis.
-  visitParenthesis(ctx) {
-    return this.visit(ctx.expre());
-  }
 
-  // Visit a parse tree produced by GoScriptParser#Id.
-  visitId(ctx) {
-    const id = ctx.ID().getText();
-    if (this.Memory.has(id)) {
-        return this.Memory.get(id);
-    }
-    return 0;
-  }
-
-  // Visit a parse tree produced by GoScriptParser#Int.
-  visitInt(ctx) {
-    const number = Number(ctx.getText());
-    return number;
-  }
+  // Visit a parse tree produced by GoScriptParser#ConditionJustBool.
+	visitConditionJustBool(ctx) {
+    const bolWord = ctx.bol.type;
+    return bolWord === GoScriptLexer.TRUE;
+	}
 
 }

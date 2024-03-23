@@ -237,3 +237,83 @@ go{
   says number GuanTuTri= 123;
   if(10<4){ displays [A]; };
 };
+
+-- Este es el bueno --
+go{
+  says number A = 7;
+  says number GuanTuTri= 123;
+  if(10<11){ displays [A+GuanTuTri]; 
+      says number k =99;
+   };
+};
+
+-- ACTIVIDAD PRUEBA IF BÁSICO - 15 MARZO ---
+void main() {
+// este es un comentario simple
+  if(true) {
+    printf('Hola mundo');
+  }
+}
+
+void main() {
+// este es un comentario simple
+  if(true) {
+    int a = 20;
+    printf('Hola mundo');
+    printf(a);
+  }
+}
+
+void main() {
+// este es un comentario simple
+  int a;
+  if(true) {
+    printf('Hola mundo')
+  }
+  printf(a);
+}
+
+void main() {
+// este es un comentario simple
+  int a;
+  if(true) {
+    printf(b);
+  }
+  printf(a);
+}
+
+
+-traducido-
+go{
+// este es un comentario simpleasdasdasd
+  if(true) { 
+    displays["Hola mundo"];
+  };
+};
+
+go{
+  // este es un comentario simple
+  if(true) { 
+    says number a = 20;
+    displays["Hola mundo"];
+    displays[a];
+  };
+};
+
+go {
+// este es un comentario simple
+  says number a;
+  if(true) { 
+    displays["Hola mundo"];
+  };
+  displays[a];
+};
+
+go {
+// este es un comentario simple
+  says number a;
+  if(true) { 
+    displays[b];
+  };
+  displays[a];
+};

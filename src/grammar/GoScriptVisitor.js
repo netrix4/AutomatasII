@@ -108,5 +108,11 @@ export default class GoScriptVisitor extends antlr4.tree.ParseTreeVisitor {
 	}
 
 
+	// Visit a parse tree produced by GoScriptParser#ConditionJustBool.
+	visitConditionJustBool(ctx) {
+	  return this.visitChildren(ctx);
+	}
+
+
 
 }

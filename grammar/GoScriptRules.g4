@@ -10,6 +10,8 @@ LETTERSTR: 'letterstr'|'LETTERSTR';
 SAYS: 'says'|'SAYS';
 DISPLAYS: 'displays'|'DISPLAYS';
 IF: 'if'|'IF';
+TRUE: 'true' | 'TRUE';
+FALSE: 'false' | 'FALSE';
 
 // Symbols
 ID : [a-zA-Z]+;
@@ -34,7 +36,6 @@ BRACEO: '[';
 BRACEC: ']';
 GREATERTHAN: '>';
 LESSTHAN: '<';
-
 
 // Ignoring rules
 NEWLINE: [\r\n]+;

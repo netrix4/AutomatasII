@@ -15,7 +15,6 @@ export default function HomePage() {
   const inputAnalizer = new InputAnalizer();
 
   const onTextInputChange = (event) =>{
-    // event.preventDefault();
     const newInput = event.target.value;
     setInputUser(newInput);
     const numberOfLines = inputAnalizer.countInstructionsRows(newInput);

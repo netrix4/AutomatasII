@@ -3,40 +3,41 @@
 import antlr4 from 'antlr4';
 import GoScriptVisitor from './GoScriptVisitor.js';
 
-const serializedATN = [4,1,31,117,2,0,7,0,2,1,7,1,2,2,7,2,2,3,7,3,2,4,7,
+const serializedATN = [4,1,33,118,2,0,7,0,2,1,7,1,2,2,7,2,2,3,7,3,2,4,7,
 4,2,5,7,5,2,6,7,6,2,7,7,7,1,0,1,0,1,0,3,0,20,8,0,1,0,1,0,1,0,1,1,1,1,1,1,
 4,1,28,8,1,11,1,12,1,29,1,2,1,2,1,2,1,2,1,2,1,2,1,2,3,2,39,8,2,1,3,1,3,1,
 3,1,3,1,3,1,3,1,3,1,3,1,3,3,3,50,8,3,1,4,1,4,1,4,1,4,3,4,56,8,4,1,4,1,4,
 1,4,1,4,1,4,1,4,1,4,3,4,65,8,4,1,4,1,4,3,4,69,8,4,1,5,1,5,1,5,1,5,1,5,1,
 5,1,5,3,5,78,8,5,1,5,1,5,1,5,1,5,1,5,1,5,5,5,86,8,5,10,5,12,5,89,9,5,1,6,
 1,6,1,6,1,6,1,6,1,6,3,6,97,8,6,1,6,1,6,1,6,1,7,1,7,1,7,1,7,1,7,1,7,1,7,1,
-7,1,7,1,7,1,7,1,7,1,7,3,7,115,8,7,1,7,0,1,10,8,0,2,4,6,8,10,12,14,0,3,2,
-0,4,4,6,6,1,0,20,21,1,0,22,23,124,0,16,1,0,0,0,2,27,1,0,0,0,4,38,1,0,0,0,
-6,49,1,0,0,0,8,68,1,0,0,0,10,77,1,0,0,0,12,90,1,0,0,0,14,114,1,0,0,0,16,
-17,5,2,0,0,17,19,5,15,0,0,18,20,3,2,1,0,19,18,1,0,0,0,19,20,1,0,0,0,20,21,
-1,0,0,0,21,22,5,16,0,0,22,23,5,18,0,0,23,1,1,0,0,0,24,28,3,4,2,0,25,28,3,
-8,4,0,26,28,3,12,6,0,27,24,1,0,0,0,27,25,1,0,0,0,27,26,1,0,0,0,28,29,1,0,
-0,0,29,27,1,0,0,0,29,30,1,0,0,0,30,3,1,0,0,0,31,32,5,7,0,0,32,33,7,0,0,0,
-33,39,3,6,3,0,34,35,5,7,0,0,35,36,7,0,0,0,36,37,5,10,0,0,37,39,5,18,0,0,
-38,31,1,0,0,0,38,34,1,0,0,0,39,5,1,0,0,0,40,41,5,10,0,0,41,42,5,19,0,0,42,
-43,3,10,5,0,43,44,5,18,0,0,44,50,1,0,0,0,45,46,5,10,0,0,46,47,5,19,0,0,47,
-48,5,17,0,0,48,50,5,18,0,0,49,40,1,0,0,0,49,45,1,0,0,0,50,7,1,0,0,0,51,52,
-5,8,0,0,52,53,5,27,0,0,53,55,3,10,5,0,54,56,5,31,0,0,55,54,1,0,0,0,55,56,
-1,0,0,0,56,57,1,0,0,0,57,58,5,28,0,0,58,59,5,18,0,0,59,69,1,0,0,0,60,61,
-5,8,0,0,61,62,5,27,0,0,62,64,5,17,0,0,63,65,5,31,0,0,64,63,1,0,0,0,64,65,
-1,0,0,0,65,66,1,0,0,0,66,67,5,28,0,0,67,69,5,18,0,0,68,51,1,0,0,0,68,60,
-1,0,0,0,69,9,1,0,0,0,70,71,6,5,-1,0,71,78,5,11,0,0,72,78,5,10,0,0,73,74,
-5,24,0,0,74,75,3,10,5,0,75,76,5,25,0,0,76,78,1,0,0,0,77,70,1,0,0,0,77,72,
-1,0,0,0,77,73,1,0,0,0,78,87,1,0,0,0,79,80,10,5,0,0,80,81,7,1,0,0,81,86,3,
-10,5,6,82,83,10,4,0,0,83,84,7,2,0,0,84,86,3,10,5,5,85,79,1,0,0,0,85,82,1,
-0,0,0,86,89,1,0,0,0,87,85,1,0,0,0,87,88,1,0,0,0,88,11,1,0,0,0,89,87,1,0,
-0,0,90,91,5,9,0,0,91,92,5,24,0,0,92,93,3,14,7,0,93,94,5,25,0,0,94,96,5,15,
-0,0,95,97,3,2,1,0,96,95,1,0,0,0,96,97,1,0,0,0,97,98,1,0,0,0,98,99,5,16,0,
-0,99,100,5,18,0,0,100,13,1,0,0,0,101,102,3,10,5,0,102,103,5,29,0,0,103,104,
-3,10,5,0,104,115,1,0,0,0,105,106,3,10,5,0,106,107,5,30,0,0,107,108,3,10,
-5,0,108,115,1,0,0,0,109,110,3,10,5,0,110,111,5,19,0,0,111,112,5,19,0,0,112,
-113,3,10,5,0,113,115,1,0,0,0,114,101,1,0,0,0,114,105,1,0,0,0,114,109,1,0,
-0,0,115,15,1,0,0,0,13,19,27,29,38,49,55,64,68,77,85,87,96,114];
+7,1,7,1,7,1,7,1,7,1,7,1,7,3,7,116,8,7,1,7,0,1,10,8,0,2,4,6,8,10,12,14,0,
+4,2,0,4,4,6,6,1,0,22,23,1,0,24,25,1,0,10,11,126,0,16,1,0,0,0,2,27,1,0,0,
+0,4,38,1,0,0,0,6,49,1,0,0,0,8,68,1,0,0,0,10,77,1,0,0,0,12,90,1,0,0,0,14,
+115,1,0,0,0,16,17,5,2,0,0,17,19,5,17,0,0,18,20,3,2,1,0,19,18,1,0,0,0,19,
+20,1,0,0,0,20,21,1,0,0,0,21,22,5,18,0,0,22,23,5,20,0,0,23,1,1,0,0,0,24,28,
+3,4,2,0,25,28,3,8,4,0,26,28,3,12,6,0,27,24,1,0,0,0,27,25,1,0,0,0,27,26,1,
+0,0,0,28,29,1,0,0,0,29,27,1,0,0,0,29,30,1,0,0,0,30,3,1,0,0,0,31,32,5,7,0,
+0,32,33,7,0,0,0,33,39,3,6,3,0,34,35,5,7,0,0,35,36,7,0,0,0,36,37,5,12,0,0,
+37,39,5,20,0,0,38,31,1,0,0,0,38,34,1,0,0,0,39,5,1,0,0,0,40,41,5,12,0,0,41,
+42,5,21,0,0,42,43,3,10,5,0,43,44,5,20,0,0,44,50,1,0,0,0,45,46,5,12,0,0,46,
+47,5,21,0,0,47,48,5,19,0,0,48,50,5,20,0,0,49,40,1,0,0,0,49,45,1,0,0,0,50,
+7,1,0,0,0,51,52,5,8,0,0,52,53,5,29,0,0,53,55,3,10,5,0,54,56,5,33,0,0,55,
+54,1,0,0,0,55,56,1,0,0,0,56,57,1,0,0,0,57,58,5,30,0,0,58,59,5,20,0,0,59,
+69,1,0,0,0,60,61,5,8,0,0,61,62,5,29,0,0,62,64,5,19,0,0,63,65,5,33,0,0,64,
+63,1,0,0,0,64,65,1,0,0,0,65,66,1,0,0,0,66,67,5,30,0,0,67,69,5,20,0,0,68,
+51,1,0,0,0,68,60,1,0,0,0,69,9,1,0,0,0,70,71,6,5,-1,0,71,78,5,13,0,0,72,78,
+5,12,0,0,73,74,5,26,0,0,74,75,3,10,5,0,75,76,5,27,0,0,76,78,1,0,0,0,77,70,
+1,0,0,0,77,72,1,0,0,0,77,73,1,0,0,0,78,87,1,0,0,0,79,80,10,5,0,0,80,81,7,
+1,0,0,81,86,3,10,5,6,82,83,10,4,0,0,83,84,7,2,0,0,84,86,3,10,5,5,85,79,1,
+0,0,0,85,82,1,0,0,0,86,89,1,0,0,0,87,85,1,0,0,0,87,88,1,0,0,0,88,11,1,0,
+0,0,89,87,1,0,0,0,90,91,5,9,0,0,91,92,5,26,0,0,92,93,3,14,7,0,93,94,5,27,
+0,0,94,96,5,17,0,0,95,97,3,2,1,0,96,95,1,0,0,0,96,97,1,0,0,0,97,98,1,0,0,
+0,98,99,5,18,0,0,99,100,5,20,0,0,100,13,1,0,0,0,101,102,3,10,5,0,102,103,
+5,31,0,0,103,104,3,10,5,0,104,116,1,0,0,0,105,106,3,10,5,0,106,107,5,32,
+0,0,107,108,3,10,5,0,108,116,1,0,0,0,109,110,3,10,5,0,110,111,5,21,0,0,111,
+112,5,21,0,0,112,113,3,10,5,0,113,116,1,0,0,0,114,116,7,3,0,0,115,101,1,
+0,0,0,115,105,1,0,0,0,115,109,1,0,0,0,115,114,1,0,0,0,116,15,1,0,0,0,13,
+19,27,29,38,49,55,64,68,77,85,87,96,115];
 
 
 const atn = new antlr4.atn.ATNDeserializer().deserialize(serializedATN);
@@ -50,12 +51,12 @@ export default class GoScriptParser extends antlr4.Parser {
     static grammarFileName = "GoScript.g4";
     static literalNames = [ null, null, null, "'dotnum'", null, "'letter'", 
                             null, null, null, null, null, null, null, null, 
-                            null, "'{'", "'}'", null, "';'", "'='", "'*'", 
-                            "'/'", "'+'", "'-'", "'('", "')'", "'\"'", "'['", 
-                            "']'", "'>'", "'<'" ];
+                            null, null, null, "'{'", "'}'", null, "';'", 
+                            "'='", "'*'", "'/'", "'+'", "'-'", "'('", "')'", 
+                            "'\"'", "'['", "']'", "'>'", "'<'" ];
     static symbolicNames = [ null, "WS", "GO", "DOTNUM", "NUMBER", "LETTER", 
-                             "LETTERSTR", "SAYS", "DISPLAYS", "IF", "ID", 
-                             "INT", "NO_ID", "CHARAS", "DISPLAYEDTEXT", 
+                             "LETTERSTR", "SAYS", "DISPLAYS", "IF", "TRUE", 
+                             "FALSE", "ID", "INT", "NO_ID", "CHARAS", "DISPLAYEDTEXT", 
                              "CBRACEO", "CBRACEC", "TTX", "SCOLON", "EQU", 
                              "STAR", "DIAGO", "SUM", "RES", "PO", "PC", 
                              "DQUOTE", "BRACEO", "BRACEC", "GREATERTHAN", 
@@ -319,7 +320,7 @@ export default class GoScriptParser extends antlr4.Parser {
 	            this.state = 55;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            if(_la===31) {
+	            if(_la===33) {
 	                this.state = 54;
 	                this.match(GoScriptParser.NEWLINE);
 	            }
@@ -342,7 +343,7 @@ export default class GoScriptParser extends antlr4.Parser {
 	            this.state = 64;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            if(_la===31) {
+	            if(_la===33) {
 	                this.state = 63;
 	                this.match(GoScriptParser.NEWLINE);
 	            }
@@ -385,7 +386,7 @@ export default class GoScriptParser extends antlr4.Parser {
 	        this.state = 77;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case 11:
+	        case 13:
 	            localctx = new IntContext(this, localctx);
 	            this._ctx = localctx;
 	            _prevctx = localctx;
@@ -393,14 +394,14 @@ export default class GoScriptParser extends antlr4.Parser {
 	            this.state = 71;
 	            this.match(GoScriptParser.INT);
 	            break;
-	        case 10:
+	        case 12:
 	            localctx = new IdContext(this, localctx);
 	            this._ctx = localctx;
 	            _prevctx = localctx;
 	            this.state = 72;
 	            this.match(GoScriptParser.ID);
 	            break;
-	        case 24:
+	        case 26:
 	            localctx = new ParenthesisContext(this, localctx);
 	            this._ctx = localctx;
 	            _prevctx = localctx;
@@ -438,7 +439,7 @@ export default class GoScriptParser extends antlr4.Parser {
 	                    this.state = 80;
 	                    localctx.operation = this._input.LT(1);
 	                    _la = this._input.LA(1);
-	                    if(!(_la===20 || _la===21)) {
+	                    if(!(_la===22 || _la===23)) {
 	                        localctx.operation = this._errHandler.recoverInline(this);
 	                    }
 	                    else {
@@ -459,7 +460,7 @@ export default class GoScriptParser extends antlr4.Parser {
 	                    this.state = 83;
 	                    localctx.operation = this._input.LT(1);
 	                    _la = this._input.LA(1);
-	                    if(!(_la===22 || _la===23)) {
+	                    if(!(_la===24 || _la===25)) {
 	                        localctx.operation = this._errHandler.recoverInline(this);
 	                    }
 	                    else {
@@ -541,8 +542,9 @@ export default class GoScriptParser extends antlr4.Parser {
 	condition() {
 	    let localctx = new ConditionContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 14, GoScriptParser.RULE_condition);
+	    var _la = 0;
 	    try {
-	        this.state = 114;
+	        this.state = 115;
 	        this._errHandler.sync(this);
 	        var la_ = this._interp.adaptivePredict(this._input,12,this._ctx);
 	        switch(la_) {
@@ -581,6 +583,21 @@ export default class GoScriptParser extends antlr4.Parser {
 	            this.expre(0);
 	            break;
 
+	        case 4:
+	            localctx = new ConditionJustBoolContext(this, localctx);
+	            this.enterOuterAlt(localctx, 4);
+	            this.state = 114;
+	            localctx.bol = this._input.LT(1);
+	            _la = this._input.LA(1);
+	            if(!(_la===10 || _la===11)) {
+	                localctx.bol = this._errHandler.recoverInline(this);
+	            }
+	            else {
+	            	this._errHandler.reportMatch(this);
+	                this.consume();
+	            }
+	            break;
+
 	        }
 	    } catch (re) {
 	    	if(re instanceof antlr4.error.RecognitionException) {
@@ -609,28 +626,30 @@ GoScriptParser.LETTERSTR = 6;
 GoScriptParser.SAYS = 7;
 GoScriptParser.DISPLAYS = 8;
 GoScriptParser.IF = 9;
-GoScriptParser.ID = 10;
-GoScriptParser.INT = 11;
-GoScriptParser.NO_ID = 12;
-GoScriptParser.CHARAS = 13;
-GoScriptParser.DISPLAYEDTEXT = 14;
-GoScriptParser.CBRACEO = 15;
-GoScriptParser.CBRACEC = 16;
-GoScriptParser.TTX = 17;
-GoScriptParser.SCOLON = 18;
-GoScriptParser.EQU = 19;
-GoScriptParser.STAR = 20;
-GoScriptParser.DIAGO = 21;
-GoScriptParser.SUM = 22;
-GoScriptParser.RES = 23;
-GoScriptParser.PO = 24;
-GoScriptParser.PC = 25;
-GoScriptParser.DQUOTE = 26;
-GoScriptParser.BRACEO = 27;
-GoScriptParser.BRACEC = 28;
-GoScriptParser.GREATERTHAN = 29;
-GoScriptParser.LESSTHAN = 30;
-GoScriptParser.NEWLINE = 31;
+GoScriptParser.TRUE = 10;
+GoScriptParser.FALSE = 11;
+GoScriptParser.ID = 12;
+GoScriptParser.INT = 13;
+GoScriptParser.NO_ID = 14;
+GoScriptParser.CHARAS = 15;
+GoScriptParser.DISPLAYEDTEXT = 16;
+GoScriptParser.CBRACEO = 17;
+GoScriptParser.CBRACEC = 18;
+GoScriptParser.TTX = 19;
+GoScriptParser.SCOLON = 20;
+GoScriptParser.EQU = 21;
+GoScriptParser.STAR = 22;
+GoScriptParser.DIAGO = 23;
+GoScriptParser.SUM = 24;
+GoScriptParser.RES = 25;
+GoScriptParser.PO = 26;
+GoScriptParser.PC = 27;
+GoScriptParser.DQUOTE = 28;
+GoScriptParser.BRACEO = 29;
+GoScriptParser.BRACEC = 30;
+GoScriptParser.GREATERTHAN = 31;
+GoScriptParser.LESSTHAN = 32;
+GoScriptParser.NEWLINE = 33;
 
 GoScriptParser.RULE_big_bang = 0;
 GoScriptParser.RULE_content = 1;
@@ -1464,6 +1483,35 @@ class ConditionMoreThanContext extends ConditionContext {
 }
 
 GoScriptParser.ConditionMoreThanContext = ConditionMoreThanContext;
+
+class ConditionJustBoolContext extends ConditionContext {
+
+    constructor(parser, ctx) {
+        super(parser);
+        this.bol = null;;
+        super.copyFrom(ctx);
+    }
+
+	TRUE() {
+	    return this.getToken(GoScriptParser.TRUE, 0);
+	};
+
+	FALSE() {
+	    return this.getToken(GoScriptParser.FALSE, 0);
+	};
+
+	accept(visitor) {
+	    if ( visitor instanceof GoScriptVisitor ) {
+	        return visitor.visitConditionJustBool(this);
+	    } else {
+	        return visitor.visitChildren(this);
+	    }
+	}
+
+
+}
+
+GoScriptParser.ConditionJustBoolContext = ConditionJustBoolContext;
 
 
 GoScriptParser.Big_bangContext = Big_bangContext; 
